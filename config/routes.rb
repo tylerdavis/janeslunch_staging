@@ -1,9 +1,10 @@
 JaneslunchCom::Application.routes.draw do
-  get "/" => "site#home"
 
-  get "/u" => "site#user"
+  get "/" => "site#index"
 
-  get "/:groupname" => "site#group"
+  get "/u" => "user#index"
+
+  get "/:groupname" => "group#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
