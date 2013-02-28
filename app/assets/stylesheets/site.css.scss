@@ -1,3 +1,51 @@
 // Place all the styles related to the site controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+html {
+  background: red;
+  h1, a {
+    color: #fff;
+  }
+}
+
+.wrapper {
+  text-align: center;
+  background: red;
+  
+  header {
+
+    padding: 20px;
+    .logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+    }
+
+    .login {
+      position: absolute;
+      top: 12px;
+      right: 5px;
+      font-size: 3em;
+    }
+  }
+
+  h1 {
+    margin: 100px 40px 50px 40px;
+  }
+
+  footer {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    ul {
+      position: relative;
+      list-style: none;
+
+      li {
+        display: inline;
+        padding-right: 3em;
+      }
+    }
+  }
+}
