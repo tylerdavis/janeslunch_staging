@@ -14,6 +14,7 @@
 /log/*.log
 /tmp
 
+*.mwb.bak
 *.swp
 *.swo
 .DS_Store
