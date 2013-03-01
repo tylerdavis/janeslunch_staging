@@ -1,32 +1,35 @@
 <div class="wrapper">
-  <header>
-    <div class="logo">Logo</div>
-    <a href="/u/login" class="login">Login</a>
-  </header>
 
-  <h1>Lunches done right at <strong>JanesLunch.com</strong>.  Make a better tagline, idiot.</h1>
+  <div class="container">
+    
 
-  <form action="/u/register">
-    <fieldset>
-      <input type="text" name="emailAddress" id="" placeholder="Enter your email to sign up!">
-      <input type="submit">
-    </fieldset>
-  </form>
+    <h1>Lunches by <strong>JanesLunch.com</strong> are just good.  Hella good.</h1>
+
+    <div class="row">
+      <form class="registration-form span6" action="/u/register">
+        <div class="controls">
+          <input class="span6" type="text" placeholder="Enter your email to register!">
+        </div>
+        <div class="password fields">
+          <div class="controls controls-row">
+            <input type="password" name="password" class="span3">
+            <input type="password" name="passwordConfirm" class="span3">
+          </div>
+          <div class="controls">
+            <a href="/u/register" class="btn btn-info">Register!</a>
+          </div>
+        </div>
+      </form>
+    </div>
+
+  </div>
 
   <footer>
-    <ul>
-      <a href="#about">
-        <li>About Us</li>
-      </a>
-      <a href="#contact">
-        <li>Contact</li>
-      </a>
-      <a href="#terms">
-        <li>Terms</li>
-      </a>
-      <a href="#suggestions">
-        <li>Suggestions</li>
-      </a>
+    <ul class="unstyled inline">
+      <li>s<a href="#about">About Us</a></li>
+      <li><a href="#contact">Contact</a></li>
+      <li><a href="#terms">Terms</a></li>
+      <li><a href="#suggestions">Suggestions</a></li>
     </ul>
   </footer>
 </div>
