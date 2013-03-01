@@ -1,12 +1,10 @@
 JaneslunchCom::Application.routes.draw do
 
-  get "sessions/new"
+  devise_for :users
 
-  get "/" => "site#index"
+  root :to => "site#index"
 
-  get "/u" => "user#index"
-
-  get "/:groupname" => "group#index"
+  # get "/:groupname" => "group#index"
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
