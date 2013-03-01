@@ -1,5 +1,7 @@
 JaneslunchCom::Application.routes.draw do
 
+  get "sessions/new"
+
   get "/" => "site#index"
 
   get "/u" => "user#index"
