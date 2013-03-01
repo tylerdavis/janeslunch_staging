@@ -5,17 +5,17 @@
     <h1>Lunches by <strong>JanesLunch.com</strong> are just good.  Hella good.</h1>
 
     <div class="row">
-      <form class="registration-form span6" action="/u/register">
+      <form class="registration-form span6" action="/users" method="POST">
         <div class="controls">
-          <input class="span6" type="text" placeholder="Enter your email to register!">
+          <input class="span6" type="text" name="user[email]" placeholder="Enter your email to register!">
         </div>
         <div class="password fields">
           <div class="controls controls-row">
-            <input type="password" name="password" class="span3">
-            <input type="password" name="passwordConfirm" class="span3">
+            <input type="password" placeholder="Password" name="user[password]" class="span3">
+            <input type="password" placeholder="Confirm Password" name="user[password_confirmation]" class="span3">
           </div>
           <div class="controls">
-            <a href="/u/register" class="btn btn-info">Register!</a>
+            <input type="submit" class="btn btn-info"></input>
           </div>
         </div>
       </form>

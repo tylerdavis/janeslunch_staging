@@ -16,8 +16,29 @@
   <div class="navbar navbar-inverse">
     <div class="navbar-inner">
       <a href="/" class="brand"><%= image_tag("logo.png") %></a>
-      <a href="/u/login" class="pull-right">LOGIN</a>
+      <div class="pull-right">
+        <% if user_signed_in? %>
+          <%= current_user.email %> - <%= link_to "Sign out", destroy_user_session_path, :method => :delete %>
+        <% else %>
+          <a href="/users/sign_in">LOGIN</a>
+        <% end %>
+      </div>
     </div>
+  </div>
+  
+  <div>
+    <% if alert %>
+      <div class="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <p><%= alert %></p>
+      </div>
+      <% end %>
+      <% if notice %>
+      <div class="alert">
+        <button type="button" class="close" data-dismiss="alert">&times;</button>
+        <p><%= notice %></p>
+      </div>
+    <% end %>
   </div>
 
 <%= yield %>
