@@ -26,7 +26,7 @@ gem 'jquery-rails'
 gem 'devise'
 
 # ordr.in
-require 'ordrin'
+gem 'ordrin'
 
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
