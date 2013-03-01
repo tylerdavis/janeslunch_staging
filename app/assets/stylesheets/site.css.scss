@@ -10,6 +10,46 @@ a:hover {
 .navbar-inverse .brand {
   padding: 0;
 }
+html {
+  background: #f24405;
+  h1, a {
+    color: #fff;
+  }
+  a:hover {
+    text-decoration: underline;
+    color: #fff
+  }
+}
+
+.wrapper {
+  text-align: center;
+  background: #f24405;
+  
+  header {
+
+    height: 125px;
+    background: #fdbe2c;
+    /*padding: 20px;*/
+    
+    .logo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      background: url('/assets/logo.png');
+      width: 253px;
+      height: 125px;
+      text-indent: -2000px;
+    }
+
+    .login {
+      position: absolute;
+      top: 1em;
+      right: 0em;
+      font-size: 1.5em;
+      padding: 0.5em;
+      background: #009900;
+    }
+  }
 
 body {
   background: #f24405;
@@ -31,8 +71,9 @@ body {
     }
   }
   footer {
+    background: #ffffff;
+    width: 100%;
     position: absolute;
     bottom: 0;
-    text-align: center;
   }
 }
