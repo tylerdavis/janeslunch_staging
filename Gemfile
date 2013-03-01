@@ -25,6 +25,9 @@ gem 'jquery-rails'
 # To use ActiveModel has_secure_password
 gem 'devise'
 
+# ordr.in
+require 'ordrin'
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
