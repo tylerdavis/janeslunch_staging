@@ -2,14 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-$yellow: rgb(252,190,41);
+$yellow: rgb(250,189,62);
 
 a:hover {
   text-decoration: none;
 }
-.navbar-inverse .brand {
-  padding: 0;
+.navbar-inverse {
+  .navbar-inner {
+    padding: 0 0 0 20px;
+    .brand {
+    padding: 0;
+    }
+    .login {
+      position: relative;
+      top: 40px;
+      padding: 10px 20px;
+      background: green;
+      color: #fff;
+    }
+  }
 }
+
 html {
   background: #f24405;
   h1, a {
@@ -18,37 +31,6 @@ html {
   a:hover {
     text-decoration: underline;
     color: #fff
-  }
-}
-
-.wrapper {
-  text-align: center;
-  background: #f24405;
-  
-  header {
-
-    height: 125px;
-    background: #fdbe2c;
-    /*padding: 20px;*/
-    
-    .logo {
-      position: absolute;
-      top: 0;
-      left: 0;
-      background: url('/assets/logo.png');
-      width: 253px;
-      height: 125px;
-      text-indent: -2000px;
-    }
-
-    .login {
-      position: absolute;
-      top: 1em;
-      right: 0em;
-      font-size: 1.5em;
-      padding: 0.5em;
-      background: #009900;
-    }
   }
 }
 
@@ -63,6 +45,15 @@ body {
   .registration-form.span6 {
     margin: 0 auto;
     float: none;
+    input {
+      height: 1.4em;
+      line-height: 1.4em;
+      font-size: 1.6em;
+      text-align: center;
+    }
+  }
+  .password-fields {
+    display: none;
   }
   .navbar {
     background: $yellow;
