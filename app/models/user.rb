@@ -10,4 +10,9 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :first, :last, :card_nickname, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
+
+  def address_for_ordr
+    Ordrin::Data::Address(addr, city, state, zip, phone, addr2='')
+  end
+
 end
