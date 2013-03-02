@@ -4,6 +4,10 @@ JaneslunchCom::Application.routes.draw do
 
   root :to => "site#index"
 
+  post "/group" => "group#create"
+
+  get "/u" => "user#index", :as => :user_root
+
   # get "/:groupname" => "group#index"
 
   # The priority is based upon order of creation:
