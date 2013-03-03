@@ -1,0 +1,10 @@
+<h1>All Groups</h1>
+
+<br>
+<% Group.all.each do |group| %>
+  <p><%= group.name %>   <%= link_to 'edit', edit_group_path(group)%>
+</p>
+<% end %>
+
+<br>
+<%= link_to 'Create New Group', new_group_path %>
