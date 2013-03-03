@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  group_id: 1
+  ordr_rid: 1
+  delivery_time: 2013-03-02 20:45:34
+
+two:
+  group_id: 1
+  ordr_rid: 1
+  delivery_time: 2013-03-02 20:45:34
