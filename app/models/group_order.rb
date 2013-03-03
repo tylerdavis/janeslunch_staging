@@ -1,6 +1,5 @@
 class GroupOrder < ActiveRecord::Base
   attr_accessible :delivery_time, :group_id, :ordr_rid
-  # attr_accessor :ordr_rid
   belongs_to :group
   before_save :get_restaurant
 
