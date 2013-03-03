@@ -4,7 +4,9 @@ JaneslunchCom::Application.routes.draw do
 
   root :to => "site#index"
 
-  post "/group" => "group#create"
+  resources :groups
+  
+  
 
   get "/u" => "user#index", :as => :user_root
 
