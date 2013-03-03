@@ -5,10 +5,10 @@ JaneslunchCom::Application.routes.draw do
   root :to => "site#index"
 
   resources :groups
-  
-  
 
   get "/u" => "user#index", :as => :user_root
+
+  match '/:groupname' => "groups#show"
 
   # get "/:groupname" => "group#index"
 
