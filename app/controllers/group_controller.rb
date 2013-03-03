@@ -2,7 +2,7 @@ class GroupController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    @group_name = params['groupname']
+    @group_name = params['id']
   end
 
   def create
@@ -17,7 +17,7 @@ class GroupController < ApplicationController
   end
 
   def show
-    @group = Group.where(params['groupname'])
+    # @group = Group.where(:name => params['groupname']).first
   end
 
   def edit
