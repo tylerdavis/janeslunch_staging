@@ -17,7 +17,7 @@ class GroupController < ApplicationController
   end
 
   def show
-    @group = Group.where(:name => params['groupname']).first
+    # @group = Group.where(:name => params['groupname']).first
   end
 
   def edit
