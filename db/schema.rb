@@ -11,7 +11,10 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> group order not working yet
 ActiveRecord::Schema.define(:version => 20130303014534) do
 
   create_table "group_orders", :force => true do |t|
@@ -21,8 +24,11 @@ ActiveRecord::Schema.define(:version => 20130303014534) do
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
   end
+<<<<<<< HEAD
 
 ActiveRecord::Schema.define(:version => 20130301225011) do
+=======
+>>>>>>> group order not working yet
 
   create_table "groups", :force => true do |t|
     t.string   "name"
