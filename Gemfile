@@ -29,6 +29,9 @@ gem 'devise_invitable'
 # ordr.in
 gem 'ordrin'
 
+# Bootstrap Timepicker
+gem 'bootstrap-timepicker-rails'
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 
