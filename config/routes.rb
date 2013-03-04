@@ -6,6 +6,10 @@ JaneslunchCom::Application.routes.draw do
 
   resources :groups
 
+  devise_scope :user do 
+    match "/groups/:id/invitations/new", :to => "users/invitations#new", :via => "get", :as => "new_group_invitation"
+  end  
+
   get "/u" => "user#index", :as => :user_root
 
   match '/:groupname' => "groups#show", :as => 'group/show'
