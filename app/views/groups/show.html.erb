@@ -1,5 +1,20 @@
 <h1><%= @group.name %></h1>
 
-<%= @group.addr %>
+This is where we show the options...
+<br><br>
+Todays restaurant Ordr.in RID is: 
+<br><%= @group.group_orders.from_today.first.ordr_rid %> <= if this is 0 then it means we can't find a restaurant that will deliver to the address
+<br><br>
+Your default lunch time is
+<%= @group.lunch_time %>
 
-<%= link_to 'Edit Group', edit_group_path %>
+<br><br>
+
+Delivering to:<br>
+<%= @group.addr %><br>
+<%= @group.addr2 %><br>
+<%= @group.city %><br>
+<%= @group.state %><br>
+<%= @group.zip %><br>
+
+<%= link_to 'Edit Group', edit_group_path(:id => @group.id) %>

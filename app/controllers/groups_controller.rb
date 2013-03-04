@@ -2,16 +2,17 @@ class GroupsController < ApplicationController
   before_filter :authenticate_user!
 
   def index
-    if user_signed_in?
-      @group_name = params['groupname']
-    else
-      redirect_to '/'
-    end
+    @group_name = params['groupname']
+  end
+
+  def new
+    @group = Group.new
   end
 
   def create
     if user_signed_in?
       @group = Group.new(params[:group])
+      @group.users << current_user
       if @group.save
         redirect_to groups_path, :notice => "You created a new group!"
       else
@@ -21,11 +22,14 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @group = Group.where(params['groupname'])
+    @group = Group.where(:name => params['groupname']).first
+    if @group.group_orders.from_today.size == 0
+      @group.group_orders << GroupOrder.new
+    end
   end
 
   def edit
-    @group = Group.where(params['groupname'])
+    @group = Group.find(params[:id])
   end
 
   def update
