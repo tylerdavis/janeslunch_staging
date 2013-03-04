@@ -8,7 +8,7 @@ JaneslunchCom::Application.routes.draw do
 
   get "/u" => "user#index", :as => :user_root
 
-  match '/:groupname' => "groups#show"
+  match '/:groupname' => "groups#show", :as => 'group/show'
 
   # get "/:groupname" => "group#index"
 
