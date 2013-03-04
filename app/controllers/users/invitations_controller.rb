@@ -1,10 +1,10 @@
 class Users::InvitationsController < Devise::InvitationsController
 
   def create
-    if @group.has_connection_with(current_user)
+    if @object.has_connection_with(current_user)
       self.resource = resource_class.invite!(resource_params, current_inviter)
 
-      group_invite = Invite.new(:invitable_type => @group.class.name, :invitable_id => @group.id, :user_id => self.resource.id, :inviter_id => current_inviter.profile.id)
+      group_invite = Invite.new(:invitable_type => @object.class.name, :invitable_id => @object.id, :user_id => self.resource.id, :inviter_id => current_inviter.profile.id)
       group_invite.save!
 
     if resource.errors.empty?
@@ -14,5 +14,6 @@ class Users::InvitationsController < Devise::InvitationsController
       respond_with_navigational(resource) { render :new }
     end
 
-  end  
+    end 
+  end   
 end
