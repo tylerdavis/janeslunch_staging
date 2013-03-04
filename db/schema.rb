@@ -12,11 +12,14 @@
 # It's strongly recommended to check this file into your version control system.
 
 ActiveRecord::Schema.define(:version => 20130304182617) do
+<<<<<<< HEAD
 
   create_table "choices", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
+=======
+>>>>>>> 1968b42a86fe4e3f2bb534bb4b6795af54dffeee
 
   create_table "group_orders", :force => true do |t|
     t.integer  "group_id"
