@@ -24,7 +24,7 @@
   <%= f.label(:lunch_time) %>
 
 <div class='input-append bootstrap-timepicker' style='display: inline;'>
-  <input id='lunch_time' class='input-small' type='text' name='group[lunch_time]' value='12:00:00'>
+  <input id='lunch_time' class='input-small' type='text' name='group[lunch_time]' value='12:00'>
   <span class='add-on'><i class='icon-time'></i></span>
 </div> 
 
@@ -35,7 +35,7 @@ $(document).ready( function(){
     minuteStep: 15,
     showMeridian: false,
     showSeconds: false,
-    defaultTime: '<%= @group.lunch_time %>'
+    defaultTime: '<%= @group.lunch_time || '12:00'  %>'
   });
 });
 </script>
