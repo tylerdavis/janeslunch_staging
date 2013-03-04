@@ -5,7 +5,7 @@ class GroupOrder < ActiveRecord::Base
 
   API_KEY = "D7gdaKOE0qLxhTwFUQ4Pb9NGiz_-etd8J0USSSS_tks"
 
-  scope :from_today, where(" created_at between ? AND ?", Time.now.utc.beginning_of_day, Time.now.utc.end_of_day)
+  scope :from_today, where(" created_at between ? AND ?", Time.now.beginning_of_day, Time.now.end_of_day)
 
   def get_restaurant
     time = self.group.lunch_time
@@ -15,6 +15,5 @@ class GroupOrder < ActiveRecord::Base
     restaurants = api.restaurant.get_delivery_list("ASAP", address)
     self.ordr_rid = restaurants.sample['id'] || 0
   end
-
 
 end
