@@ -12,6 +12,7 @@ class GroupsController < ApplicationController
   def create
     if user_signed_in?
       @group = Group.new(params[:group])
+      @group.users << current_user
       if @group.save
         redirect_to groups_path, :notice => "You created a new group!"
       else
@@ -22,6 +23,9 @@ class GroupsController < ApplicationController
 
   def show
     @group = Group.where(:name => params['groupname']).first
+    if @group.group_orders.from_today.size == 0
+      @group.group_orders << GroupOrder.new
+    end
   end
 
   def edit

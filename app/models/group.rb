@@ -3,7 +3,8 @@ class Group < ActiveRecord::Base
   has_and_belongs_to_many :users
   has_many :group_orders
 
-  validates :name, :addr, :city, :presence => true
+  validates :name, :uniqueness => true
+  validates :addr, :city, :presence => true
   validates :state, :length => { :is => 2 }
   validates :zip, :length => { :is => 5 } 
   validates :phone, :length => { :is => 10 } 

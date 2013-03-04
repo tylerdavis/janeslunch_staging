@@ -30,8 +30,8 @@ ActiveRecord::Schema.define(:version => 20130303014534) do
     t.string   "addr2"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.datetime "lunch_time"
     t.string   "state"
+    t.datetime "lunch_time"
   end
 
   create_table "groups_users", :id => false, :force => true do |t|
