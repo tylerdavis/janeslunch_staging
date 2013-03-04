@@ -41,6 +41,11 @@ ActiveRecord::Schema.define(:version => 20130303014534) do
 
   add_index "groups_users", ["group_id", "user_id"], :name => "index_groups_users_on_group_id_and_user_id"
 
+  create_table "invitations", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "ordr_ins", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
