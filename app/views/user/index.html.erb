@@ -1,1 +1,6 @@
-haha
+<%= @user.email %>
+
+<br><br>
+Member of: <br><% @user.groups.each do |g| %>
+  <%= link_to g.name, group_show_path(g.name) %>
+<% end %>
