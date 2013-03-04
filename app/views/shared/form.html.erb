@@ -13,7 +13,7 @@
   <%= f.text_field(:city) %><br>
 
   <%= f.label(:state) %>
-  <%= f.text_field(:state) %><br>
+  <%= f.select :state, us_states%>
 
   <%= f.label(:zip) %>
   <%= f.text_field(:zip) %><br>
@@ -22,7 +22,24 @@
   <%= f.text_field(:phone) %><br>
 
   <%= f.label(:lunch_time) %>
-  <%= f.text_field(:lunch_time) %><br>
 
+<div class='input-append bootstrap-timepicker' style='display: inline;'>
+  <input id='lunch_time' class='input-small' type='text' name='group[lunch_time]' value='12:00:00'>
+  <span class='add-on'><i class='icon-time'></i></span>
+</div> 
+
+<script type="text/javascript">
+$(document).ready( function(){
+  $('#lunch_time').timepicker({
+    template: 'dropdown',
+    minuteStep: 15,
+    showMeridian: false,
+    showSeconds: false,
+    defaultTime: '<%= @group.lunch_time %>'
+  });
+});
+</script>
+
+<br>
   <%= f.submit %>
 <% end %>
