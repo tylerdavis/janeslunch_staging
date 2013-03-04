@@ -1,6 +1,7 @@
 class GroupOrder < ActiveRecord::Base
   attr_accessible :delivery_time, :group_id, :ordr_rid
   before_save :get_restaurant
+  belongs_to :group
 
   API_KEY = "D7gdaKOE0qLxhTwFUQ4Pb9NGiz_-etd8J0USSSS_tks"
 
@@ -8,6 +9,7 @@ class GroupOrder < ActiveRecord::Base
 
   def get_restaurant
     #@TODO - working with everything being Eastern time at the moment. Need to take different timezones into account!
+
     time = self.group.lunch_time
     time = DateTime.parse(time + ' Eastern')
     api = Ordrin::APIs.new(API_KEY, :test)
