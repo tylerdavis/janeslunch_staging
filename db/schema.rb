@@ -46,28 +46,7 @@ ActiveRecord::Schema.define(:version => 20130303214227) do
 
   add_index "groups_users", ["group_id", "user_id"], :name => "index_groups_users_on_group_id_and_user_id"
 
-  create_table "items", :force => true do |t|
-    t.string   "descrip"
-    t.string   "name"
-    t.integer  "ordrin_id"
-    t.float    "price"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "restaurant_id"
-  end
-
-  create_table "options", :force => true do |t|
-    t.string   "descrip"
-    t.string   "name"
-    t.integer  "ordrin_id"
-    t.float    "price"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "item_id"
-  end
-
-  create_table "orders", :force => true do |t|
-    t.float    "tip"
+  create_table "invitations", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
