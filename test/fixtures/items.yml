@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  descrip: MyString
+  name: MyString
+  ordrin_id: 1
+  price: 1.5
+
+two:
+  descrip: MyString
+  name: MyString
+  ordrin_id: 1
+  price: 1.5
