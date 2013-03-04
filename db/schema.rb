@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304155450) do
+ActiveRecord::Schema.define(:version => 20130304182617) do
 
   create_table "choices", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -35,7 +35,7 @@ ActiveRecord::Schema.define(:version => 20130304155450) do
     t.string   "addr2"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.time     "lunch_time"
+    t.string   "lunch_time"
     t.string   "state"
   end
 
