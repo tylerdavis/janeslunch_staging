@@ -12,5 +12,7 @@ class User < ActiveRecord::Base
   attr_accessible :first, :last, :card_nickname, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
+  attr_accessible :invitation_token
+
 
 end

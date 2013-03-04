@@ -1,5 +1,5 @@
 class Users::InvitationsController < Devise::InvitationsController
-
+  
   def create
     # if @group.has_connection_with(current_user)
       self.resource = resource_class.invite!(resource_params, current_inviter)
