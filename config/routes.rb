@@ -1,5 +1,8 @@
 JaneslunchCom::Application.routes.draw do
 
+  resources :choices
+
+
   devise_for :users
 
   root :to => "site#index"
