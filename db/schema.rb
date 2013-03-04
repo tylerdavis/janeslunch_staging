@@ -11,7 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130303014534) do
+ActiveRecord::Schema.define(:version => 20130304204310) do
+
+  create_table "choices", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "group_orders", :force => true do |t|
     t.integer  "group_id"
@@ -40,6 +45,61 @@ ActiveRecord::Schema.define(:version => 20130303014534) do
   end
 
   add_index "groups_users", ["group_id", "user_id"], :name => "index_groups_users_on_group_id_and_user_id"
+
+  create_table "items", :force => true do |t|
+    t.string   "descrip"
+    t.string   "name"
+    t.integer  "ordrin_id"
+    t.float    "price"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "restaurant_id"
+  end
+
+  create_table "options", :force => true do |t|
+    t.string   "descrip"
+    t.string   "name"
+    t.integer  "ordrin_id"
+    t.float    "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "item_id"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.float    "tip"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "ordr_ins", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "restaurants", :force => true do |t|
+    t.string   "addr"
+    t.string   "addr2"
+    t.string   "city"
+    t.string   "cs_contact_phone"
+    t.string   "cuisine"
+    t.string   "name"
+    t.string   "postal_code"
+    t.integer  "ordrin_id"
+    t.string   "state"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
+  end
+
+  create_table "suboptions", :force => true do |t|
+    t.string   "descrip"
+    t.string   "name"
+    t.integer  "ordrin_id"
+    t.float    "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "option_id"
+  end
 
   create_table "users", :force => true do |t|
     t.string   "first"
