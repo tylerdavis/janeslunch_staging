@@ -20,3 +20,6 @@ Delivering to:<br>
 <%= @group.zip %><br>
 
 <%= link_to 'Edit Group', edit_group_path(:id => @group.id) %>
+
+<br>
+<%= link_to 'Invite Users to Join Group', new_group_invitation_path(:id => @group.id) %>
