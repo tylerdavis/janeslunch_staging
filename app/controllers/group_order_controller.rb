@@ -1,0 +1,3 @@
+class GroupOrderController < ApplicationController
+
+end
