@@ -9,11 +9,10 @@ class GroupOrder < ActiveRecord::Base
 
   def get_restaurant
     time = self.group.lunch_time
-    raise DateTime.parse(time).inspect
-    # time = time.strftime("%m-%d+%H:%M")
+    time = DateTime.parse(time + ' Eastern')
     api = Ordrin::APIs.new(API_KEY, :test)
     address = self.group.address_for_ordr
-    restaurants = api.restaurant.get_delivery_list("ASAP", address)
+    restaurants = api.restaurant.get_delivery_list(time, address)
     self.ordr_rid = restaurants.sample['id'] || 0
   end
 
