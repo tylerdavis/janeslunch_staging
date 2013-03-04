@@ -3,7 +3,7 @@
 This is where we show the options...
 <br><br>
 Todays restaurant Ordr.in RID is: 
-<br><%= @group.group_orders.from_today.first.ordr_rid %>
+<br><%= @group.group_orders.from_today.first.ordr_rid %> <= if this is 0 then it means we can't find a restaurant that will deliver to the address
 <br><br>
 Your default lunch time is
 <%= @group.lunch_time %>
