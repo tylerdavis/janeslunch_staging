@@ -11,15 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304182617) do
-<<<<<<< HEAD
+ActiveRecord::Schema.define(:version => 20130304204310) do
 
   create_table "choices", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
-=======
->>>>>>> 1968b42a86fe4e3f2bb534bb4b6795af54dffeee
 
   create_table "group_orders", :force => true do |t|
     t.integer  "group_id"
@@ -38,8 +35,8 @@ ActiveRecord::Schema.define(:version => 20130304182617) do
     t.string   "addr2"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "lunch_time"
     t.string   "state"
+    t.string   "lunch_time"
   end
 
   create_table "groups_users", :id => false, :force => true do |t|
@@ -54,7 +51,28 @@ ActiveRecord::Schema.define(:version => 20130304182617) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "ordr_ins", :force => true do |t|
+  create_table "items", :force => true do |t|
+    t.string   "descrip"
+    t.string   "name"
+    t.integer  "ordrin_id"
+    t.float    "price"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "restaurant_id"
+  end
+
+  create_table "options", :force => true do |t|
+    t.string   "descrip"
+    t.string   "name"
+    t.integer  "ordrin_id"
+    t.float    "price"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+    t.integer  "item_id"
+  end
+
+  create_table "orders", :force => true do |t|
+    t.float    "tip"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
