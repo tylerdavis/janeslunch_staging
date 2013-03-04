@@ -1,12 +1,6 @@
 JaneslunchCom::Application.routes.draw do
 
-  resources :orders
-
-
-  resources :choices
-
-
-  devise_for :users
+  devise_for :users, :controllers => { :invitations => 'users/invitations' }
 
   root :to => "site#index"
 
