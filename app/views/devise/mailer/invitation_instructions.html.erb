@@ -1,6 +1,6 @@
 <p>Hello,</p>
 
-<p><%= @current_user %> has invited you to join the <%= @groupname %> lunch group! You can sign up and accept the group invitation below.</p>
+<p><%= @current_inviter %> has invited you to join the <%= @groupname %> lunch group! You can sign up and accept the group invitation below.</p>
 
 <p><%= link_to 'Accept invitation', accept_group_invitation_url(@resource, :invitation_token => @resource.invitation_token) %></p>
 
