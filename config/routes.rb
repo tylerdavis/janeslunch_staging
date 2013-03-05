@@ -1,5 +1,7 @@
 JaneslunchCom::Application.routes.draw do
 
+  resources :ordr_accounts
+
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
 
   root :to => "site#index"
@@ -11,8 +13,12 @@ JaneslunchCom::Application.routes.draw do
   end  
 
   get "/u" => "user#index", :as => :user_root
+  get "/u/edit" => "user#edit"
+
+  resources :user
 
   match '/:groupname' => "groups#show", :as => 'group/show'
+
 
   # get "/:groupname" => "group#index"
 

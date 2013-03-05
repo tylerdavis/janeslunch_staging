@@ -1,0 +1,23 @@
+
+<%= form_for(@ordr_account) do |f| %>
+  <%= f.label(:addr) %>
+  <%= f.text_field(:addr) %><br>
+
+  <%= f.label(:addr2) %>
+  <%= f.text_field(:addr2) %><br>
+
+  <%= f.label(:city) %>
+  <%= f.text_field(:city) %><br>
+
+  <%= f.label(:state) %>
+  <%= f.select :state, us_states%>
+
+  <%= f.label(:zip) %>
+  <%= f.text_field(:zip) %><br>
+
+  <%= f.label(:phone) %>
+  <%= f.text_field(:phone) %><br>
+
+
+  <%= f.submit %>
+<% end %>

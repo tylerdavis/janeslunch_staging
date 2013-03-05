@@ -1,0 +1,30 @@
+
+<%= form_for(@user) do |f| %>
+
+  <%= f.label(:first) %>
+  <%= f.text_field(:first) %><br>
+
+  <%= f.label(:last) %>
+  <%= f.text_field(:last) %><br>
+  
+  <%= f.label(:addr) %>
+  <%= f.text_field(:addr) %><br>
+  
+  <%= f.label(:addr2) %>
+  <%= f.text_field(:addr2) %><br>
+
+  <%= f.label(:city) %>
+  <%= f.text_field(:city) %><br>
+  
+  <%= f.label(:state) %>
+  <%= f.text_field(:state) %><br>
+
+  <%= f.label(:zip) %>
+  <%= f.text_field(:zip) %><br>
+  
+  <%= f.label(:phone) %>
+  <%= f.text_field(:phone) %><br>
+
+  <%= f.submit %>
+
+<% end %>
