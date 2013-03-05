@@ -27,14 +27,15 @@ a:hover, a:focus {
       position: relative;
       top: 40px;
       padding: 10px 20px;
-      background: green;
+      background: $green;
       color: #fff;
     }
   }
 }
 
 html {
-  background: #f24405;
+  height: 100%;
+  width: 100%;
   h1, a {
     color: #fff;
   }
@@ -45,8 +46,8 @@ html {
 }
 
 body {
+  background: url('/assets/background.jpg');
   font-family: 'Raleway', sans-serif;
-  background: $orange;
   background-size: 100%;
   height: 100%;
   width: 100%;
@@ -97,8 +98,20 @@ body {
   }
   footer {
     background: #ffffff;
+    color: #111;
     width: 100%;
     position: absolute;
     bottom: 0;
+    text-align: center;
+    font-size: 1.4em;
+    line-height: 1.6em;
+    padding-top: 10px;
+    ul {
+      list-style: none;
+      li {
+        display: inline-block;
+        margin-right: 20px;
+      }
+    }
   }
 }
