@@ -22,7 +22,7 @@ JaneslunchCom::Application.configure do
     :port                 => 587,
     :domain               => 'gmail.com',
     :user_name            => 'a.crystal.chang@gmail.com',
-    :password             => 'gnosis12',
+    :password             => 'know1edgeiskey',
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
 
