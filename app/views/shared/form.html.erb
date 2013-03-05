@@ -23,23 +23,22 @@
 
   <%= f.label(:lunch_time) %>
 
-<div class='input-append bootstrap-timepicker' style='display: inline;'>
-  <input id='lunch_time' class='input-small' type='text' name='group[lunch_time]' value='12:00:00'>
-  <span class='add-on'><i class='icon-time'></i></span>
-</div> 
+  <div class='input-append bootstrap-timepicker' style='display: inline;'>
+    <input id='lunch_time' class='input-small' type='text' name='group[lunch_time]'>
+    <span class='add-on'><i class='icon-time'></i></span>
+  </div> <br>
 
-<script type="text/javascript">
-$(document).ready( function(){
-  $('#lunch_time').timepicker({
-    template: 'dropdown',
-    minuteStep: 15,
-    showMeridian: false,
-    showSeconds: false,
-    defaultTime: '<%= @group.lunch_time %>'
+  <script type="text/javascript">
+  $(document).ready( function(){
+    $('#lunch_time').timepicker({
+      template: 'dropdown',
+      minuteStep: 15,
+      showMeridian: false,
+      showSeconds: false,
+      defaultTime: '<%= @group.lunch_time || "12:00" %>'
+    });
   });
-});
-</script>
+  </script>
 
-<br>
   <%= f.submit %>
 <% end %>
