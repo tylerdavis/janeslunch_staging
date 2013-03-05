@@ -1,9 +1,7 @@
 <h1><%= @group.name %></h1>
 
-This is where we show the options...
-<br><br>
-Todays restaurant Ordr.in RID is: 
-<br><%= @group.group_orders.from_today.first.ordr_rid %> <= if this is 0 then it means we can't find a restaurant that will deliver to the address
+<h2>Todays restaurant is: </h2>
+<h2><%= @group_order.items.first.restaurant.name %></h2>
 <br><br>
 Your default lunch time is
 
@@ -18,6 +16,28 @@ Delivering to:<br>
 <%= @group.city %><br>
 <%= @group.state %><br>
 <%= @group.zip %><br>
+
+<div class="choices-wrapper">
+  <% for item in @group_order.items %>
+    <div class="choice">
+      <h2><%= item.name %></h2>
+      <p><%= item.descrip %></p>
+      <p>$<%= item.price %></p>
+      <!-- <% if item.options %>
+        <div class="options">
+          <h3>Options</h3>
+          <% for option in item.options%>
+            <p><%= option.name %></p>
+            <% for suboption in option.suboptions %>
+              <p><em>$<%= suboption.price %> - <%= suboption.name %></em></p>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %> -->
+    </div>
+  <% end %>
+</div>
+
 
 <%= link_to 'Edit Group', edit_group_path(:id => @group.id) %>
 
