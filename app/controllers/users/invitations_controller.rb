@@ -7,9 +7,7 @@ class Users::InvitationsController < Devise::InvitationsController
   end
   
   def create
-    @group = params["group"]
-    # raise @group.inspect
-    resource_params['group'] = @group
+    $groupHAHA = params["group"]
     self.resource = resource_class.invite!(resource_params, current_inviter)
 
     if resource.errors.empty?
@@ -21,7 +19,6 @@ class Users::InvitationsController < Devise::InvitationsController
   end  
 
   def edit
-    @group = Group.find(params[:id])
     if params[:invitation_token] && self.resource = resource_class.to_adapter.find_first( :invitation_token => params[:invitation_token] )
       render :edit
     else
@@ -38,6 +35,7 @@ class Users::InvitationsController < Devise::InvitationsController
       set_flash_message :notice, flash_message
       sign_in(resource_name, resource)
       respond_with resource, :location => after_accept_path_for(resource)
+      
     else
       respond_with_navigational(resource){ render :edit }
     end
