@@ -1,11 +1,7 @@
 class Users::InvitationsController < Devise::InvitationsController
-
+  
   def create
-    if @object.has_connection_with(current_user)
-      self.resource = resource_class.invite!(resource_params, current_inviter)
-
-      group_invite = Invite.new(:invitable_type => @object.class.name, :invitable_id => @object.id, :user_id => self.resource.id, :inviter_id => current_inviter.profile.id)
-      group_invite.save!
+    self.resource = resource_class.invite!(resource_params, current_inviter)
 
     if resource.errors.empty?
       set_flash_message :notice, :send_instructions, :email => self.resource.email
@@ -13,7 +9,15 @@ class Users::InvitationsController < Devise::InvitationsController
     else
       respond_with_navigational(resource) { render :new }
     end
+  end  
 
-    end 
-  end   
+  def edit
+    
+    if params[:invitation_token] && self.resource = resource_class.to_adapter.find_first( :invitation_token => params[:invitation_token] )
+      render :edit
+    else
+      set_flash_message(:alert, :invitation_token_invalid)
+      redirect_to after_sign_out_path_for(resource_name)
+    end
+  end 
 end
