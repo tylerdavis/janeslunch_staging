@@ -9,33 +9,11 @@ class User < ActiveRecord::Base
   has_one :ordr_account
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first, :last, :addr, :addr2, :city, :state, :zip, :phone, :card_nickname, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :first, :last, :ordr_account_id, :addr, :addr2, :city, :state, :zip, :phone, :card_nickname, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
   attr_accessible :invitation_token
 
-
-  def billing_address
-    Ordrin::Data::Address.new(addr, city, state, zip, phone, addr2)
-  end
-
-  def ordr_login
-    Ordrin::Data::UserLogin.new(email, encrypted_password)
-  end
-
-  def update_ordr_account
-    if ordr_account_id == nil
-      ordr_user = $ordrin.user.create(ordr_login, first, last)
-      self.ordr_account_id = ordr_user['user_id']
-    else
-      ordr_user = $ordrin.user.update(ordr_login, first, last)
-    end
-    return ordr_user
-  end
-
-  def create_credit_card
-
-  end
 
 
 end
