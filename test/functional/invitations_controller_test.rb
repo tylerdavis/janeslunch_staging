@@ -1,6 +1,7 @@
 require 'test_helper'
 
-class InvitationsControllerTest < ActionController::TestCase
+class Users::InvitationsControllerTest < ActionController::TestCase
+  
   # test "the truth" do
   #   assert true
   # end

@@ -12,6 +12,8 @@ class User < ActiveRecord::Base
   attr_accessible :first, :last, :addr, :addr2, :city, :state, :zip, :phone, :card_nickname, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
+  attr_accessible :invitation_token
+
 
   def billing_address
     Ordrin::Data::Address.new(addr, city, state, zip, phone, addr2)
