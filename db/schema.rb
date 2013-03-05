@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130304182617) do
+ActiveRecord::Schema.define(:version => 20130305165119) do
 
   create_table "choices", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -52,14 +52,22 @@ ActiveRecord::Schema.define(:version => 20130304182617) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "invitationstogroups", :force => true do |t|
+    t.string   "recipeint_email"
+    t.integer  "sender_id"
+    t.string   "token"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
+  end
 
   create_table "items", :force => true do |t|
     t.string   "descrip"
     t.string   "name"
     t.integer  "ordrin_id"
     t.float    "price"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "group_order_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
     t.integer  "restaurant_id"
   end
 
@@ -77,22 +85,6 @@ ActiveRecord::Schema.define(:version => 20130304182617) do
     t.float    "tip"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-  end
-
-  create_table "ordr_accounts", :force => true do |t|
-    t.integer  "user_id"
-    t.string   "addr"
-    t.string   "addr2"
-    t.string   "city"
-    t.string   "state"
-    t.string   "zip"
-    t.string   "phone"
-    t.string   "first"
-    t.string   "last"
-    t.string   "card_nick"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-    t.integer  "item_id"
   end
 
   create_table "restaurants", :force => true do |t|
