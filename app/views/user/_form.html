@@ -25,6 +25,19 @@
   <%= f.label(:phone) %>
   <%= f.text_field(:phone) %><br>
 
+  <label for="cc_name">Name on card</label>
+  <input type="text" id="cc_name" name="cc[name]"><br>
+
+  <label for="cc_card_number">Card number</label>
+  <input type="text" id="cc_card_number" name="cc[number]"><br>
+
+  <label for="cc_expiry">Expiry</label>
+  <input type="text" id="cc_expiry" name="cc[expiry][]">
+  <input type="text" id="cc_expiry" name="cc[expiry][]"><br>
+
+  <label for="cc_cvc">Card number</label>
+  <input type="text" id="cc_cvc" name="cc[cvc]"><br>
+
   <%= f.submit %>
 
 <% end %>

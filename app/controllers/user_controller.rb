@@ -32,19 +32,18 @@ class UserController < ApplicationController
     if @user.update_attributes(params[:user])
       
       update_ordr_account()
+      update_ordr_cc(params[:cc])
 
       redirect_to user_path, :notice => "You updated you!"
     else
     end  
   end
 
-  def update_ordr_account(email, password, first, last)
-    address = @billing_address
-    login = Ordrin::Data::UserLogin.new(@email, @encrypted_password)
-    user = $ordrin.user.create(login, first, last)
-    raise user
-    # if $ordrin.user.update(email, first, last)
-  end
+  # def update_ordr_account(email, password, first, last)
+  #   login = Ordrin::Data::UserLogin.new(@email, @encrypted_password)
+  #   user = $ordrin.user.create(login, first, last)
+  #   # if $ordrin.user.update(email, first, last)
+  # end
 
 #======= Helpers
 
@@ -53,21 +52,40 @@ class UserController < ApplicationController
   end
 
   def ordr_login
-    Ordrin::Data::UserLogin.new(@user.email, @user.encrypted_password)
+    return Ordrin::Data::UserLogin.new(@user.email, @user.encrypted_password)
   end
 
-  def update_ordr_account
+  def credit_card(name, expiry_month, expiry_year, bill_address, number, cvc)
+    Ordrin::Data::CreditCard.new(name, expiry_month, expiry_year, bill_address, number, cvc)
+  end
+
+
+  def update_ordr_account()
     if @user.ordr_account_id == nil || @user.ordr_account_id == ""
-      u = $ordrin.user.create(ordr_login, @user.first, @user.last)
+      api_request = $ordrin.user.create(ordr_login, @user.first, @user.last)
     else
-      #@TODO this should use user.update but for some reason we get 401.
-      u = $ordrin.user.create(ordr_login, @user.first, @user.last)
+      api_request = $ordrin.user.update(ordr_login, @user.first, @user.last)
     end
-    @user.ordr_account_id = u['user_id']
+    @user.ordr_account_id = api_request['user_id']
     @user.save
+
   end
 
-  def create_credit_card
+
+  def update_ordr_cc(cc)
+    ordr_cc = credit_card(cc['name'], cc['expiry'][0], cc['expiry'][1], billing_address, cc['number'], cc['cvc'])
+
+    request = $ordrin.user.set_credit_card(ordr_login, "cc1", ordr_cc)
+
+    if request['msg'] == "Credit Card Saved"
+      # @TODO hard coding cc1 as card nickname for now
+      @user.card_nickname = "cc1"
+    else
+      @user.card_nickname = ""
+    end
+    @user.save
+
+    raise $ordrin.user.get_credit_card(ordr_login, "cc1").inspect
 
   end
 
