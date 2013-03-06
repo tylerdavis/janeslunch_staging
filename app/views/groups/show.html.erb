@@ -1,27 +1,34 @@
-<h1>Pick your lunch</h1>
+<h1>- Pick your lunch -</h1>
 <h1><%= @group_order.items[0].restaurant.name %></h1>
 
 <div class="choices-wrapper row">
-    <div class="choice span4">
+    <div id="<%= @group_order.items[0].id %>" class="choice span4">
       <h2><%= @group_order.items[0].name %></h2>
       <p class="description"><%= @group_order.items[0].descrip %></p>
       <span class="price"><%= number_to_currency(@group_order.items[0].price) %></span>
     </div>
-    <div class="choice span4">
+    <div id="<%= @group_order.items[1].id %>" class="choice span4">
       <h2><%= @group_order.items[1].name %></h2>
       <p class="description"><%= @group_order.items[1].descrip %></p>
       <span class="price"><%= number_to_currency(@group_order.items[1].price) %></span>
     </div>
-    <div class="choice span4">
+    <div id="<%= @group_order.items[2].id %>" class="choice span4">
       <h2><%= @group_order.items[2].name %></h2>
       <p class="description"><%= @group_order.items[2].descrip %></p>
       <span class="price"><%= number_to_currency(@group_order.items[2].price) %></span>
     </div>
 </div>
 
-  <a href="#" class="make-order">Order!</a>
+  <a id="submit-order" class="make-order">Order!</a>
 
 <div class="links" style="display: none;">
   <%= link_to 'Edit Group', edit_group_path(:id => @group.id) %>
   <%= link_to 'Invite Users to Join Group', new_group_invitation_path(:id => @group.id) %>
 </div>
+
+<script>
+  $(function() {
+    window.groupOrder = <%= @group_order.id %>;
+    window.group = '<%= @group.name %>';
+  })
+</script>

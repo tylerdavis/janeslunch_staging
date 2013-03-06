@@ -49,6 +49,14 @@ a:hover, a:focus {
 html {
   height: 100%;
   width: 100%;
+<<<<<<< HEAD
+}
+
+body {
+  background: url('/assets/background.jpg') no-repeat top left fixed;
+  font-family: 'Raleway', sans-serif;
+
+=======
   h1 {
     color: $white;
     font-size: 4em;
@@ -68,6 +76,7 @@ body {
   font-family: 'Raleway', sans-serif;
   height: 100%;
   width: 100%;
+>>>>>>> styles
   a { font-weight: 600;}
   h1 {
     font-family: "ThirstyRoughBlkThr", "Cubano", "Raleway", "Helvetica-Neue";
