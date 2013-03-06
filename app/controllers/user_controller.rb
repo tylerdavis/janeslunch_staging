@@ -31,8 +31,10 @@ class UserController < ApplicationController
     @user = current_user
     if @user.update_attributes(params[:user])
       
-      update_ordr_account()
-      update_ordr_cc(params[:cc])
+      if params[:cc['process_card']] == 'true'
+        update_ordr_account()
+        update_ordr_cc(params[:cc])
+      end
 
       redirect_to user_path, :notice => "You updated you!"
     else

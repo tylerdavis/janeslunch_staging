@@ -25,18 +25,33 @@
   <%= f.label(:phone) %>
   <%= f.text_field(:phone) %><br>
 
-  <label for="cc_name">Name on card</label>
-  <input type="text" id="cc_name" name="cc[name]"><br>
+  <!--# @TODO fix this crappy show/hide logic and put it where it belongs-->
+  <% if @user.card_nickname == '' || @user.card_nickname == nil %>
+  <%   visibility='block' %>
+  <%   process_card='true' %>
+  <% else %>
+  <%   visibility='none' %>
+  <%   process_card='false' %>
+  <% end %>
 
-  <label for="cc_card_number">Card number</label>
-  <input type="text" id="cc_card_number" name="cc[number]"><br>
+  <div class="cc_input" style="display:<%=visibility%>;">
 
-  <label for="cc_expiry">Expiry</label>
-  <input type="text" id="cc_expiry" name="cc[expiry][]" style="width:95px;">
-  <input type="text" id="cc_expiry" name="cc[expiry][]" style="width:95px;"><br>
+    <input type="hidden" name="cc[process_card]" value="<%=process_card%>">
 
-  <label for="cc_cvc">CVC number</label>
-  <input type="text" id="cc_cvc" name="cc[cvc]"><br>
+    <label for="cc_name">Name on card</label>
+    <input type="text" id="cc_name" name="cc[name]"><br>
+
+    <label for="cc_card_number">Card number</label>
+    <input type="text" id="cc_card_number" name="cc[number]"><br>
+
+    <label for="cc_expiry">Expiry</label>
+    <input type="text" id="cc_expiry" name="cc[expiry][]" style="width:95px;">
+    <input type="text" id="cc_expiry" name="cc[expiry][]" style="width:95px;"><br>
+
+    <label for="cc_cvc">CVC number</label>
+    <input type="text" id="cc_cvc" name="cc[cvc]"><br>
+
+  </div>
 
   <%= f.submit %>
 
