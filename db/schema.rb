@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305165119) do
+ActiveRecord::Schema.define(:version => 20130306150119) do
 
   create_table "choices", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -140,6 +140,7 @@ ActiveRecord::Schema.define(:version => 20130305165119) do
     t.string   "state"
     t.string   "zip"
     t.string   "phone"
+    t.integer  "card_last_four"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

@@ -32,7 +32,10 @@ class UserController < ApplicationController
     if @user.update_attributes(params[:user])
       
       update_ordr_account()
-      update_ordr_cc(params[:cc])
+
+      if params[:cc]['process_card'] == 'true'
+        update_ordr_cc(params[:cc])
+      end
 
       redirect_to user_path, :notice => "You updated you!"
     else
@@ -75,6 +78,7 @@ class UserController < ApplicationController
     if request['msg'] == "Credit Card Saved"
       # @TODO hard coding cc1 as card nickname for now
       @user.card_nickname = "cc1"
+      @user.card_last_four = cc['number'].slice(-4, 4) 
     else
       @user.card_nickname = ""
     end
