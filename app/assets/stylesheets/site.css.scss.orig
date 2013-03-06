@@ -125,6 +125,9 @@ body {
     }
   }
   .wrapper {
+<<<<<<< HEAD
+    padding: 0 2em 2em 2em;
+=======
     padding: 2em;
     .btn-success {
       background-color: $green;
@@ -135,6 +138,7 @@ body {
       color: $white;
     }
     input {font-family: 'Raleway'; font-weight: 700;}
+>>>>>>> 9e0db978db34a8bbdce924c5080ca31aaf5ffb93
   }
   footer {
     background: $white;
