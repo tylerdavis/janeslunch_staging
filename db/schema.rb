@@ -11,6 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
+
 ActiveRecord::Schema.define(:version => 20130304234917) do
 
   create_table "choices", :force => true do |t|
@@ -138,6 +139,13 @@ ActiveRecord::Schema.define(:version => 20130304234917) do
     t.integer  "invitation_limit"
     t.integer  "invited_by_id"
     t.string   "invited_by_type"
+    t.string   "ordr_account_id"
+    t.string   "addr"
+    t.string   "addr2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "phone"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

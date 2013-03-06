@@ -2,5 +2,6 @@
 
 <br><br>
 Member of: <br><% @user.groups.each do |g| %>
-  <%= link_to g.name, group_show_path(g.name) %>
+  <%= link_to g.name, group_show_path(g.name) %><br>
 <% end %>
+<br><%= link_to 'Create new group', new_group_path %>
