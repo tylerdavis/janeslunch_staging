@@ -3,7 +3,9 @@
 <head>
   <title>JaneslunchCom</title>
   <link href="//fonts.googleapis.com/css?family=Raleway:400,600,700" rel="stylesheet">
-  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/css/bootstrap-combined.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.1/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome.css" rel="stylesheet">
+  <link href="//netdna.bootstrapcdn.com/font-awesome/3.0.2/css/font-awesome-ie7.css" rel="stylesheet">
   <%= stylesheet_link_tag "application", :media => "all" %>
   <%= stylesheet_link_tag "bootstrap-timepicker" %>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
@@ -49,6 +51,16 @@
 
   <%= yield %>
   </div>
+
+  <footer>
+    <ul>
+      <li>About</li>
+      <li>Contact</li>
+      <li>Terms</li>
+      <li>Security</li>
+      <li>Suggestions</li>
+    </ul>
+  </footer>
 
 </body>
 </html>

@@ -1,45 +1,27 @@
-<h1><%= @group.name %></h1>
+<h1>Pick your lunch</h1>
+<h1><%= @group_order.items[0].restaurant.name %></h1>
 
-<h2>Todays restaurant is: </h2>
-<h2><%= @group_order.items.first.restaurant.name %></h2>
-<br><br>
-Your default lunch time is
-
-<%= @group.lunch_time %><br><br>
-
-
-<br><br>
-
-Delivering to:<br>
-<%= @group.addr %><br>
-<%= @group.addr2 %><br>
-<%= @group.city %><br>
-<%= @group.state %><br>
-<%= @group.zip %><br>
-
-<div class="choices-wrapper">
-  <% for item in @group_order.items %>
-    <div class="choice">
-      <h2><%= item.name %></h2>
-      <p><%= item.descrip %></p>
-      <p>$<%= item.price %></p>
-      <!-- <% if item.options %>
-        <div class="options">
-          <h3>Options</h3>
-          <% for option in item.options%>
-            <p><%= option.name %></p>
-            <% for suboption in option.suboptions %>
-              <p><em>$<%= suboption.price %> - <%= suboption.name %></em></p>
-            <% end %>
-          <% end %>
-        </div>
-      <% end %> -->
+<div class="choices-wrapper row">
+    <div class="choice span4">
+      <h2><%= @group_order.items[0].name %></h2>
+      <p class="description"><%= @group_order.items[0].descrip %></p>
+      <span class="price"><%= number_to_currency(@group_order.items[0].price) %></span>
     </div>
-  <% end %>
+    <div class="choice span4">
+      <h2><%= @group_order.items[1].name %></h2>
+      <p class="description"><%= @group_order.items[1].descrip %></p>
+      <span class="price"><%= number_to_currency(@group_order.items[1].price) %></span>
+    </div>
+    <div class="choice span4">
+      <h2><%= @group_order.items[2].name %></h2>
+      <p class="description"><%= @group_order.items[2].descrip %></p>
+      <span class="price"><%= number_to_currency(@group_order.items[2].price) %></span>
+    </div>
 </div>
 
+  <a href="#" class="make-order">Order!</a>
 
-<%= link_to 'Edit Group', edit_group_path(:id => @group.id) %>
-
-<br>
-<%= link_to 'Invite Users to Join Group', new_group_invitation_path(:id => @group.id) %>
+<div class="links" style="display: none;">
+  <%= link_to 'Edit Group', edit_group_path(:id => @group.id) %>
+  <%= link_to 'Invite Users to Join Group', new_group_invitation_path(:id => @group.id) %>
+</div>
