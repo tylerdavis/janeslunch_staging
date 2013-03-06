@@ -3,23 +3,23 @@
 
 <div class="choices-wrapper row">
     <div id="<%= @group_order.items[0].id %>" class="choice span4">
-      <h2><%= @group_order.items[0].name %></h2>
+      <h3><%= @group_order.items[0].name %></h3>
       <p class="description"><%= @group_order.items[0].descrip %></p>
       <span class="price"><%= number_to_currency(@group_order.items[0].price) %></span>
     </div>
     <div id="<%= @group_order.items[1].id %>" class="choice span4">
-      <h2><%= @group_order.items[1].name %></h2>
+      <h3><%= @group_order.items[1].name %></h3>
       <p class="description"><%= @group_order.items[1].descrip %></p>
       <span class="price"><%= number_to_currency(@group_order.items[1].price) %></span>
     </div>
     <div id="<%= @group_order.items[2].id %>" class="choice span4">
-      <h2><%= @group_order.items[2].name %></h2>
+      <h3><%= @group_order.items[2].name %></h3>
       <p class="description"><%= @group_order.items[2].descrip %></p>
       <span class="price"><%= number_to_currency(@group_order.items[2].price) %></span>
     </div>
 </div>
 
-  <a href="#option-modal" id="pop-modal" class="make-order" data-toggle="modal" style="display: none;">Order!</a>
+  <a href="#option-modal" id="pop-modal" class="btn btn-large btn-success make-order" data-toggle="modal" style="display: none;">Order!</a>
 
 <div class="links" style="display: none;">
   <%= link_to 'Edit Group', edit_group_path(:id => @group.id) %>
@@ -44,7 +44,7 @@
       <h3>Total</h3>
       <h3 id="total">$23.50</h3>
 
-      <button class="btn">Submit Order</button>
+      <a class="btn btn-large btn-success">Submit Order</a>
     </div>
     <div class="clearfix"></div>
   </div>

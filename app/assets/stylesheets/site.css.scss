@@ -65,8 +65,7 @@ html {
 }
 
 body {
-  background: url('/assets/background.jpg');
-  background-size: cover;
+  background: url('/assets/background.jpg') no-repeat top left;
   font-family: 'Raleway', sans-serif;
   color: $white;
   a { font-weight: 600;}
@@ -74,6 +73,7 @@ body {
     font-family: "ThirstyRoughBlkThr", "Cubano", "Raleway", "Helvetica-Neue";
     font-size: 72px;
     line-height: 96px;
+    margin-top: 0px
   }
   h2 {
     font-family: "Cubano", "Raleway", "Helvetica-Neue";
@@ -143,10 +143,10 @@ body {
     position: fixed;
     bottom: 0;
     text-align: left;
-    font-size: 1em;
+    font-size: 1.3em;
     font-weight: 600;
-    line-height: 1.6em;
-    padding-top: 14px;
+    line-height: 2em;
+    padding: 10px;
     ul {
       list-style: none;
       li {
