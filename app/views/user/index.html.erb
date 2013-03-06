@@ -1,6 +1,9 @@
-<%= @user.email %>
-
-<br><br>
-Member of: <br><% @user.groups.each do |g| %>
-  <%= link_to g.name, group_show_path(g.name) %>
-<% end %>
+<h1>Groups</h1>
+<ul class="groups-list">
+  <% if @user.groups.count > 0 %>
+    <% @user.groups.each do |g| %>
+      <li><%= link_to g.name, group_show_path(g.name) %></li>
+    <% end %>
+  <% end %>
+<a href="/groups/new"></a>
+</ul>
