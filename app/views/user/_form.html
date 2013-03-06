@@ -25,16 +25,30 @@
   <%= f.label(:phone) %>
   <%= f.text_field(:phone) %><br>
 
+
+  <script>
+
+    $(function(){
+      $('#cc_change').click(function(){
+          $('#cc_input_form').css('display','block');
+          return false;
+        });
+    });
+
+  </script> 
+
   <!--# @TODO fix this crappy show/hide logic and put it where it belongs-->
   <% if @user.card_nickname == '' || @user.card_nickname == nil %>
   <%   visibility='block' %>
   <%   process_card='true' %>
   <% else %>
+      Credit card on file: Ending in <%=@user.card_last_four%> <span id="cc_change"><a href='#'>change</a><br><br>
   <%   visibility='none' %>
   <%   process_card='false' %>
   <% end %>
 
-  <div class="cc_input" style="display:<%=visibility%>;">
+
+  <div id="cc_input_form" style="display:<%=visibility%>;">
 
     <input type="hidden" name="cc[process_card]" value="<%=process_card%>">
 
