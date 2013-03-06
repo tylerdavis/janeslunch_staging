@@ -1,6 +1,10 @@
 class UserController < ApplicationController
   before_filter :authenticate_user!
+<<<<<<< HEAD
+  
+=======
 
+>>>>>>> f54386da37d6201c9f5d628cc2a36acde0bdea4f
   def index
     if user_signed_in?
       @user = current_user
