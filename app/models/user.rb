@@ -9,7 +9,7 @@ class User < ActiveRecord::Base
   has_one :ordr_account
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first, :last, :ordr_account_id, :addr, :addr2, :city, :state, :zip, :phone, :card_nickname, :email, :password, :password_confirmation, :remember_me
+  attr_accessible :first, :last, :ordr_account_id, :addr, :addr2, :city, :state, :zip, :phone, :card_nickname, :card_last_four, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
   attr_accessible :invitation_token
