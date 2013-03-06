@@ -39,11 +39,6 @@ class UserController < ApplicationController
     end  
   end
 
-  # def update_ordr_account(email, password, first, last)
-  #   login = Ordrin::Data::UserLogin.new(@email, @encrypted_password)
-  #   user = $ordrin.user.create(login, first, last)
-  #   # if $ordrin.user.update(email, first, last)
-  # end
 
 #======= Helpers
 
