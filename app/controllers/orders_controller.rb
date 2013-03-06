@@ -17,10 +17,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def update
-    
-  end
-
   def tray
     
   end

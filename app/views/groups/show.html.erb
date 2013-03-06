@@ -1,5 +1,5 @@
 <h1>- Pick your lunch -</h1>
-<h1><%= @group_order.items[0].restaurant.name %></h1>
+<h2><%= @group_order.items[0].restaurant.name %></h2>
 
 <div class="choices-wrapper row">
     <div id="<%= @group_order.items[0].id %>" class="choice span4">
@@ -19,11 +19,23 @@
     </div>
 </div>
 
-  <a id="submit-order" class="make-order">Order!</a>
+  <a href="#option-modal" id="pop-modal" class="make-order" data-toggle="modal" style="display: none;">Order!</a>
 
 <div class="links" style="display: none;">
   <%= link_to 'Edit Group', edit_group_path(:id => @group.id) %>
   <%= link_to 'Invite Users to Join Group', new_group_invitation_path(:id => @group.id) %>
+</div>
+
+<div id="option-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"><i class="icon-remove"></i></button>
+    <h3 id="myModalLabel">Modal header</h3>
+  </div>
+  <div class="modal-body">
+    <div class="left"></div>
+    <div class="right"></div>
+    <button class="btn">Submit Order</button>
+  </div>
 </div>
 
 <script>

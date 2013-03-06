@@ -71,15 +71,14 @@ class GroupsController < ApplicationController
     begin
       restaurants = $ordrin.restaurant.get_delivery_list(time, address)
       id = restaurants.sample['id'] || 0
-      restaurant_controller = RestaurantController.new
     rescue Exception => e
       p "There was an error pulling a restaurant - #{e}"
     end
-      restaurant = restaurant_controller.create(id)
-      # raise restaurant.inspect
-      @group_order.restaurant = restaurant
-      raise restaurant.inspect
-      restaurant.save
+    restaurant_controller = RestaurantController.new
+    restaurant = restaurant_controller.create(id)
+    # raise restaurant.inspect
+    @group_order.restaurant = restaurant
+    restaurant.save
   end
 
   def get_choices

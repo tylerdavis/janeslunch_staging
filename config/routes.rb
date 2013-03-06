@@ -1,12 +1,16 @@
 JaneslunchCom::Application.routes.draw do
 
-  resources :ordr_accounts
-
-  devise_for :users, :controllers => { :invitations => 'users/invitations' }
-
   root :to => "site#index"
+  
+  resources :user
 
   resources :groups
+  
+  resources :items
+
+  resources :ordr_accounts
+  
+  devise_for :users, :controllers => { :invitations => 'users/invitations' }
 
   devise_scope :user do 
     match "/groups/:id/invitations/new", :to => "users/invitations#new", :via => "get", :as => "new_group_invitation"
@@ -23,7 +27,6 @@ JaneslunchCom::Application.routes.draw do
   get "/u" => "user#index", :as => :user_root
   get "/u/edit" => "user#edit"
 
-  resources :user
 
   match '/:groupname' => "groups#show", :as => 'group/show'
   post '/:groupname/order' => "orders#create", :as => 'create_order'

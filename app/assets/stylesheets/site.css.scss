@@ -16,7 +16,7 @@ $red: rgb(242,61,61);
 @font-face {
   font-family: 'ThirstyRoughBlkThr';
   src: url('/assets/thirsty-rough/webfonts/261AC7_10_0.eot');
-  src: url('/assets/thirsty-rough/webfonts/261AC7_10_0.eot?#iefix') format('embedded-opentype'),url('webfonts/261AC7_10_0.woff') format('woff'),url('webfonts/261AC7_10_0.ttf') format('truetype');
+  src: url('/assets/thirsty-rough/webfonts/261AC7_10_0.eot?#iefix') format('embedded-opentype'),url('/assets/thirsty-rough/webfonts/261AC7_10_0.woff') format('woff'),url('/assets/thirsty-rough/webfonts/261AC7_10_0.ttf') format('truetype');
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -124,7 +124,7 @@ body {
     }
   }
   .wrapper {
-    padding: 2em;
+    padding: 0 2em 2em 2em;
   }
   footer {
     background: $white;
