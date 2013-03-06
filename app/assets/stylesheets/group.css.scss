@@ -12,9 +12,12 @@ $red: rgb(242,61,61);
   text-align: center;
   .choices-wrapper {
     height: 340px;
+    width: 1000px;
+    margin: 0 auto;
     .choice {
       background: $orange;
       height: 300px;
+      width: 300px;
       padding: 0;
       position: relative;
       box-sizing: border-box;
@@ -27,10 +30,13 @@ $red: rgb(242,61,61);
         margin: 0;
         font-size: 1.8em;
       }
+      .choice:last-child {
+
+      }
       .selected {
         position: absolute;
-        top: -16px;
-        right: -16px;
+        top: -22px;
+        right: -22px;
         font-size: 2em;
         line-height: 1em;
         background: $green;
