@@ -8,6 +8,10 @@ $pink: rgb(226,20,126);
 $green: rgb(0,153,0);
 $orange: rgb(242,68,5);
 $red: rgb(242,61,61);
+@font-face {
+  font-family: "Cubano";
+  src: url(/assets/cubano/cubano-regular-webfont.ttf) format('truetype');
+}
 
 a {
   color:$white;
@@ -54,6 +58,7 @@ body {
   a { font-weight: 600;}
   h1 {
     color: #fff;
+    font-family: "Cubano", "Helvetica-Neue";
   }
   .alert, .message {
     width: 30%;
