@@ -13,6 +13,15 @@ $red: rgb(242,61,61);
   src: url(/assets/cubano/cubano-regular-webfont.ttf) format('truetype');
 }
 
+@font-face {
+  font-family: 'ThirstyRoughBlkThr';
+  src: url('/assets/thirsty-rough/webfonts/261AC7_10_0.eot');
+  src: url('/assets/thirsty-rough/webfonts/261AC7_10_0.eot?#iefix') format('embedded-opentype'),url('webfonts/261AC7_10_0.woff') format('woff'),url('webfonts/261AC7_10_0.ttf') format('truetype');
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $white;
+}
 a {
   color:$white;
   text-decoration:none;
@@ -32,7 +41,7 @@ a:hover, a:focus {
       top: 40px;
       padding: 10px 20px;
       background: $green;
-      color: #fff;
+      color: $white;
     }
   }
 }
@@ -41,11 +50,11 @@ html {
   height: 100%;
   width: 100%;
   h1, a {
-    color: #fff;
+    color: $white;
   }
   a:hover {
     text-decoration: underline;
-    color: #fff
+    color: $white
   }
 }
 
@@ -55,8 +64,13 @@ body {
 
   a { font-weight: 600;}
   h1 {
-    color: #fff;
-    font-family: "Cubano", "Helvetica-Neue";
+    font-family: "ThirstyRoughBlkThr", "Cubano", "Raleway", "Helvetica-Neue";
+    font-size: 72px;
+    line-height: 96px;
+  }
+  h2 {
+    font-family: "Cubano", "Raleway", "Helvetica-Neue";
+    font-size: 60px;
   }
   .alert, .message {
     width: 30%;
@@ -104,7 +118,7 @@ body {
     padding: 2em;
   }
   footer {
-    background: #ffffff;
+    background: $white;
     color: #111;
     width: 100%;
     position: fixed;
