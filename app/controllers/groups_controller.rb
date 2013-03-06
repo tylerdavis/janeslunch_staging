@@ -78,6 +78,7 @@ class GroupsController < ApplicationController
       restaurant = restaurant_controller.create(id)
       # raise restaurant.inspect
       @group_order.restaurant = restaurant
+      raise restaurant.inspect
       restaurant.save
   end
 
