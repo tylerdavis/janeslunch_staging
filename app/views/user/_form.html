@@ -42,7 +42,7 @@
   <%   visibility='block' %>
   <%   process_card='true' %>
   <% else %>
-      Credit card on file: Ending in <%=@user.card_last_four%> <span id="cc_change"><a href='#'>change</a><br><br>
+      Credit card on file: Ends with <%=@user.card_last_four%> <a href='#' id="cc_change">change</a><br><br>
   <%   visibility='none' %>
   <%   process_card='false' %>
   <% end %>
