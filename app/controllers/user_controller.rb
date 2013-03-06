@@ -85,8 +85,6 @@ class UserController < ApplicationController
     end
     @user.save
 
-    raise $ordrin.user.get_credit_card(ordr_login, "cc1").inspect
-
   end
 
 end
