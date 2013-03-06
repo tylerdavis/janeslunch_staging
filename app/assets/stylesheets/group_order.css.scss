@@ -72,11 +72,47 @@ body {
     background: $yellow;
     border-radius: 0;
     border: none;
+    width: 800px;
+    left: 40%;
     .modal-header {
       background: $pink;
       border: none;
     }
     .modal-body {
+      text-align: left;
+      .right {
+        float: right;
+        width: 33%;
+        ul.tip-calc {
+          list-style: none;
+          position: relative;
+          left: 30px;
+          li {
+            display: inline;
+            margin-right: 20px;
+          }
+          li:last-child {
+            margin-right: 0;
+          }
+        }
+      }
+      .left {
+        float: left;
+        width: 63%;
+        overflow: hidden;
+        max-height: 100%;
+        .option {
+          .suboption {
+            display: inline-block;
+            width: 33%;
+            height: 30px;
+          }
+        }
+      }
+      .clearfix {
+        float: none;
+        clear: both;
+      }
       button {
         border-radius: 0;
         border: none;
