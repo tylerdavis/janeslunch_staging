@@ -18,7 +18,7 @@ JaneslunchCom::Application.routes.draw do
 
   devise_scope :user do
     match "groups/:id/invitations/create", :to => "users/invitations#create", :via => "post", :as => "create_group_invitation"
-  end  
+  end
 
   get "/u" => "user#index", :as => :user_root
   get "/u/edit" => "user#edit"

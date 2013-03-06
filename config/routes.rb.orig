@@ -1,24 +1,35 @@
 JaneslunchCom::Application.routes.draw do
 
-<<<<<<< HEAD
-  resources :orders
+  resources :ordr_accounts
 
-
-  resources :choices
-
-
-  devise_for :users
-=======
   devise_for :users, :controllers => { :invitations => 'users/invitations' }
->>>>>>> new invitations controller create
 
   root :to => "site#index"
 
   resources :groups
 
-  get "/u" => "user#index", :as => :user_root
+  devise_scope :user do 
+    match "/groups/:id/invitations/new", :to => "users/invitations#new", :via => "get", :as => "new_group_invitation"
+  end  
 
+  devise_scope :user do
+    match "groups/:id/invitations/accept", :to => "users/invitations#edit", :via => "get", :as => "accept_group_invitation"
+  end  
+
+  devise_scope :user do
+    match "groups/:id/invitations/create", :to => "users/invitations#create", :via => "post", :as => "create_group_invitation"
+  end
+
+  get "/u" => "user#index", :as => :user_root
+  get "/u/edit" => "user#edit"
+
+  resources :user
+
+<<<<<<< HEAD
+  get '/:groupname' => "groups#show", :as => 'group/show'
+=======
   match '/:groupname' => "groups#show", :as => 'group/show'
+
 
   # get "/:groupname" => "group#index"
 
@@ -74,8 +85,6 @@ JaneslunchCom::Application.routes.draw do
   # root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
+>>>>>>> f54386da37d6201c9f5d628cc2a36acde0bdea4f
 
-  # This is a legacy wild controller route that's not recommended for RESTful applications.
-  # Note: This route will make all actions in every controller accessible via GET requests.
-  # match ':controller(/:action(/:id))(.:format)'
 end

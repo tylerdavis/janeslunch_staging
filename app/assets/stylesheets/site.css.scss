@@ -55,6 +55,10 @@ body {
   h1 {
     color: #fff;
   }
+  .alert, .message {
+    width: 30%;
+    margin: 0 auto;
+  }
   .registration-form.span6 {
     margin: 0 auto;
     float: none;
@@ -100,7 +104,7 @@ body {
     background: #ffffff;
     color: #111;
     width: 100%;
-    position: absolute;
+    position: fixed;
     bottom: 0;
     text-align: center;
     font-size: 1.4em;
