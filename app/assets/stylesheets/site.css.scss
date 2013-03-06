@@ -49,13 +49,6 @@ a:hover, a:focus {
 html {
   height: 100%;
   width: 100%;
-  h1, a {
-    color: $white;
-  }
-  a:hover {
-    text-decoration: underline;
-    color: $white
-  }
 }
 
 body {
@@ -94,6 +87,9 @@ body {
     .navbar-inner {
       background: $yellow;
       border: none;
+      .brand {
+        height: 125px;
+      }
       .dropdown-menu, dropdown-submenu {
         li {
           a {
