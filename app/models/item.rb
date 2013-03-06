@@ -3,5 +3,5 @@ class Item < ActiveRecord::Base
 
   belongs_to :restaurant
   belongs_to :group_order
-  has_many :options
+  has_many :orders
 end
