@@ -43,7 +43,6 @@ class User < ActiveRecord::Base
     ordr_cc = credit_card(cc['name'], cc['expiry'][0], cc['expiry'][1], billing_address, cc['number'], cc['cvc'])
     last4 = cc['number'].slice(-4,4)
     api_response = $ordrin.user.set_credit_card(ordr_login, last4, ordr_cc)
-
     if api_response['msg'].downcase == "credit card saved"
       self.card_nickname = last4
     else

@@ -43,9 +43,9 @@ class UserController < ApplicationController
     if @user.update_attributes(params[:user])
       @user.update_ordr_account()
       @user.save
-      redirect_to user_path, :notice => "You updated you!"
+      redirect_to '/u', :notice => "You updated you!"
     else
-      redirect_to user_path, :notice => "Something failed"
+      redirect_to '/u', :notice => "Something failed"
     end  
   end
 
@@ -53,7 +53,7 @@ class UserController < ApplicationController
     @user = current_user
     @user.update_ordr_cc(params[:cc])
     @user.save
-    redirect_to user_path, :notice => "Card updated!"
+    redirect_to '/u', :notice => "Card updated!"
   end
 
 end
