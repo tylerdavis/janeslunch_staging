@@ -18,19 +18,17 @@ ActiveRecord::Schema.define(:version => 20130307152351) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "group_order_items", :force => true do |t|
-    t.integer  "group_order_id"
-    t.integer  "item_id"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
-  end
-
   create_table "group_orders", :force => true do |t|
     t.integer  "group_id"
     t.datetime "delivery_time"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
     t.integer  "restaurant_id"
+  end
+
+  create_table "group_orders_items", :force => true do |t|
+    t.integer "group_order_id"
+    t.integer "item_id"
   end
 
   create_table "groups", :force => true do |t|
