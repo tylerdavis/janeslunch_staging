@@ -26,7 +26,7 @@ JaneslunchCom::Application.routes.draw do
 
   get "/u" => "user#index", :as => :user_root
   get "/u/edit" => "user#edit"
-  post "/user/:id/card" => "user#update_cc"
+  post "/u/card" => "user#update_cc"
 
 
   match '/:groupname' => "groups#show", :as => 'group/show'
