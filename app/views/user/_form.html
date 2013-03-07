@@ -1,42 +1,69 @@
 
-<%= form_for(@user) do |f| %>
+<div class="row-fluid">
+  <div class="span4"></div>
+  <div class="span4">
+    <%= form_for(@user) do |f| %>
+    <table class="single_centered">
+      <tr>
+        <th><%= f.label(:first) %></th>
+        <td><%= f.text_field(:first) %></td>
+      </tr>
+      <tr> 
+        <th><%= f.label(:last) %></th>
+        <td><%= f.text_field(:last) %></td>
+      </tr>
+        <th><%= f.label(:addr) %></th>
+        <td><%= f.text_field(:addr) %></td>
+      <tr>
+      </tr>
+        <th><%= f.label(:addr2) %></th>
+        <td><%= f.text_field(:addr2) %></td>
+      <tr>
+      </tr>
+        <th><%= f.label(:city) %></th>
+        <td><%= f.text_field(:city) %></td>
+      <tr>
+      </tr>    
+        <th><%= f.label(:state) %></th>
+        <td><%= f.select :state, us_states%></td>
+      <tr>
+      </tr>
+        <th><%= f.label(:zip) %></th>
+        <td><%= f.text_field(:zip) %></td>
+      <tr>
+      </tr>    
+        <th><%= f.label(:phone) %></th>
+        <td><%= f.text_field(:phone) %></td>
+      <tr>
+      <tr>
+        <th><label for="">Credit card:</label></th>
+        <td>
+        <% if @user.card_nickname == nil || @user.card_nickname.length == "" %>
+          <a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Add credit card</a>
+        <% else %>
+          xxxx-xxxx-xxxx-<%= @user.card_nickname%> <a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Change</a>
+        <% end %>
+      </td>
+      </tr>
+      <tr>
+        <td></td>    
+        <td><br><%= f.submit 'Update', :class => 'btn btn-success' %></td>
+      </tr>
 
-  <%= f.label(:first) %>
-  <%= f.text_field(:first) %><br>
+  <% end %>
 
-  <%= f.label(:last) %>
-  <%= f.text_field(:last) %><br>
-  
-  <%= f.label(:addr) %>
-  <%= f.text_field(:addr) %><br>
-  
-  <%= f.label(:addr2) %>
-  <%= f.text_field(:addr2) %><br>
+    </table>
 
-  <%= f.label(:city) %>
-  <%= f.text_field(:city) %><br>
-  
-  <%= f.label(:state) %>
-  <%= f.text_field(:state) %><br>
-
-  <%= f.label(:zip) %>
-  <%= f.text_field(:zip) %><br>
-  
-  <%= f.label(:phone) %>
-  <%= f.text_field(:phone) %><br>
-
-  <%= f.submit %>
-
-<% end %>
-
-<% if @user.card_nickname.length > 1 %>
-  Credit card: xxxx-xxxx-xxxx-<%= @user.card_nickname%><a href="#card-modal" role="button" class="btn" data-toggle="modal">Change</a>
-<% else %>
-  <a href="#card-modal" role="button" class="btn" data-toggle="modal">Add credit card</a>
-<% end %>
+  </div>
+  <div class="span4"></div>
+</div>
 
 
- 
+
+
+
+
+
 <!-- Modal -->
 <div id="card-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="card-modalLabel" aria-hidden="true">
   <div class="modal-header">
@@ -61,7 +88,7 @@
       <label for="cc_cvc">CVC number</label>
       <input type="text" id="cc_cvc" name="cc[cvc]"><br>
 
-  <%= f.submit %>
+  <%= f.submit 'Update', :class => 'btn btn-success' %>
 
 <% end %>
 
