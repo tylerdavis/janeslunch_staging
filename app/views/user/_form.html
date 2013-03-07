@@ -25,48 +25,47 @@
   <%= f.label(:phone) %>
   <%= f.text_field(:phone) %><br>
 
-
-  <script>
-
-    $(function(){
-      $('#cc_change').click(function(){
-          $('#cc_input_form').css('display','block');
-          return false;
-        });
-    });
-
-  </script> 
-
-  <!--# @TODO fix this crappy show/hide logic and put it where it belongs-->
-  <% if @user.card_nickname == '' || @user.card_nickname == nil %>
-  <%   visibility='block' %>
-  <%   process_card='true' %>
-  <% else %>
-      Credit card on file: Ends with <%=@user.card_last_four%> <a href='#' id="cc_change">change</a><br><br>
-  <%   visibility='none' %>
-  <%   process_card='false' %>
-  <% end %>
-
-
-  <div id="cc_input_form" style="display:<%=visibility%>;">
-
-    <input type="hidden" name="cc[process_card]" value="<%=process_card%>">
-
-    <label for="cc_name">Name on card</label>
-    <input type="text" id="cc_name" name="cc[name]"><br>
-
-    <label for="cc_card_number">Card number</label>
-    <input type="text" id="cc_card_number" name="cc[number]"><br>
-
-    <label for="cc_expiry">Expiry</label>
-    <input type="text" id="cc_expiry" name="cc[expiry][]" style="width:95px;">
-    <input type="text" id="cc_expiry" name="cc[expiry][]" style="width:95px;"><br>
-
-    <label for="cc_cvc">CVC number</label>
-    <input type="text" id="cc_cvc" name="cc[cvc]"><br>
-
-  </div>
-
   <%= f.submit %>
 
 <% end %>
+
+
+<!-- Button to trigger modal -->
+<a href="#myModal" role="button" class="btn" data-toggle="modal">Launch demo modal</a>
+ 
+<!-- Modal -->
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Modal header</h3>
+  </div>
+  <div class="modal-body">
+
+
+    <%= form_for @user, :url => {:user => 'update_cc'} do |f|%>
+      <label for="cc_name">Name on card</label>
+      <input type="text" id="cc_name" name="cc[name]"><br>
+
+      <label for="cc_card_number">Card number</label>
+      <input type="text" id="cc_card_number" name="cc[number]"><br>
+
+      <label for="cc_expiry">Expiry</label>
+      <input type="text" id="cc_expiry" name="cc[expiry][]" style="width:95px;">
+      <input type="text" id="cc_expiry" name="cc[expiry][]" style="width:95px;"><br>
+
+      <label for="cc_cvc">CVC number</label>
+      <input type="text" id="cc_cvc" name="cc[cvc]"><br>
+
+    <%= f.submit %>
+    <% end %> 
+
+
+
+  </div>
+
+</div>
+
+
+
+
+
