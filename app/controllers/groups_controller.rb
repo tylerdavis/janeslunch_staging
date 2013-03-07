@@ -31,10 +31,12 @@ class GroupsController < ApplicationController
       if @group.group_orders.from_today.size == 0
         new_group_order
         @group.group_orders << @group_order
-        @group_order
       else 
         @group_order = @group.group_orders.from_today.first
-        @group_order
+      end
+      if @group_order.restaurant_id
+      else
+        redirect_to '/u', :notice => "Sorry, it looks like no one is delivery to your location at the moment."
       end
     end
   end
@@ -59,9 +61,10 @@ class GroupsController < ApplicationController
   def new_group_order
     @group_order = GroupOrder.new
     @group_order.group = @group
-    get_restaurant
-    get_choices
-    @group_order.save
+
+    if (get_restaurant != false)
+      get_choices 
+    end
   end
 
   def get_restaurant
@@ -73,7 +76,9 @@ class GroupsController < ApplicationController
       id = restaurants.sample['id'] || 0
     rescue Exception => e
       p "There was an error pulling a restaurant - #{e}"
+      return false
     end
+
     restaurant_controller = RestaurantController.new
     restaurant = restaurant_controller.create(id)
     # raise restaurant.inspect
