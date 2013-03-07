@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(:version => 20130306190542) do
     t.string   "addr2"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "lunch_time"
     t.string   "state"
+    t.string   "lunch_time"
   end
 
   create_table "groups_users", :id => false, :force => true do |t|
@@ -90,16 +90,6 @@ ActiveRecord::Schema.define(:version => 20130306190542) do
     t.integer  "user_id"
     t.integer  "group_order_id"
     t.integer  "item_id"
-  end
-
-  create_table "ordr_ins", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "ordr_ins", :force => true do |t|
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
   end
 
   create_table "pending_invitations", :force => true do |t|
