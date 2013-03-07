@@ -42,7 +42,7 @@
         <td><%= f.text_field(:phone) %></td>
       <tr>
       <tr class="<%= show_card %>">
-        <th><label for="">Credit card:</label></th>
+        <th><label for="">Credit card</label></th>
         <td id="credit_card">
         <% if @user.card_nickname == nil || @user.card_nickname == "" %>
           <a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Add credit card</a>
