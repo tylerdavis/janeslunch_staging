@@ -7,10 +7,13 @@
 <% @user.groups.each do |g| %>
   <%= link_to g.name, group_show_path(g.name) %><br>
 <% end %>
-<br><br>
-Invited to: <br><% @pending.each do |g| %><br>
-  <%= g.name %>
-  <% end %>
+
+<% if @pending.count > 0 %>
+  <br><br>
+  Invited to: <br><% @pending.each do |g| %><br>
+    <%= g.name %>
+    <% end %>
+<% end %>
 
 <br><%= link_to 'Create new group', new_group_path, :class => 'btn btn-large btn-success' %>
 
