@@ -230,4 +230,11 @@ body {
   p {
     font-size: 0.8em;
   }
+  #error_explanation {
+    color: red;
+    h2 {
+      color: inherit;
+      font-size: 1em;
+    }
+  }
 }
