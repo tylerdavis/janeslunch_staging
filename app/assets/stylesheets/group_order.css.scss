@@ -94,9 +94,14 @@ body {
           list-style: none;
           position: relative;
           left: 30px;
+          width: 60%;
           li {
-            margin-right: 20px;
+            margin-right: 8px;
             display: inline-block;
+            border-radius: 4px;
+            padding: 0 5px 0 6px;
+            background: #E82;
+            cursor: pointer;
           }
           li:last-child {
             margin-right: 0;
