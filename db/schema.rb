@@ -36,8 +36,8 @@ ActiveRecord::Schema.define(:version => 20130306190542) do
     t.string   "addr2"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "state"
     t.string   "lunch_time"
+    t.string   "state"
   end
 
   create_table "groups_users", :id => false, :force => true do |t|
@@ -85,6 +85,14 @@ ActiveRecord::Schema.define(:version => 20130306190542) do
 
   create_table "orders", :force => true do |t|
     t.float    "tip"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "user_id"
+    t.integer  "group_order_id"
+    t.integer  "item_id"
+  end
+
+  create_table "ordr_ins", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -152,6 +160,7 @@ ActiveRecord::Schema.define(:version => 20130306190542) do
     t.string   "state"
     t.string   "zip"
     t.string   "phone"
+    t.integer  "card_last_four"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

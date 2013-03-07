@@ -3,5 +3,5 @@ class Order < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :group_order
-  has_one :choice
+  belongs_to :item
 end

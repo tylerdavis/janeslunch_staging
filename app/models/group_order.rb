@@ -6,6 +6,6 @@ class GroupOrder < ActiveRecord::Base
 
   belongs_to :group
   has_many :items
-  has_one :restaurant
+  belongs_to :restaurant
   
 end
