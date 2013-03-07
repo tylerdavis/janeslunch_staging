@@ -33,7 +33,7 @@ class GroupsController < ApplicationController
         @group.group_orders << @group_order
       else 
         @group_order = @group.group_orders.from_today.first
-        raise @group_order.inspect
+        # raise @group_order.inspect
       end
       unless @group_order.restaurant_id
         redirect_to '/u', :notice => "Sorry, it looks like no one is delivery to your location at the moment."
