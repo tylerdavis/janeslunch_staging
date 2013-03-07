@@ -24,7 +24,6 @@ class UserController < ApplicationController
   end
 
   def edit
-
     if user_signed_in?
       @user = current_user
     end   
@@ -42,62 +41,19 @@ class UserController < ApplicationController
   def update
     @user = current_user
     if @user.update_attributes(params[:user])
-      
-      update_ordr_account()
-
-      if params[:cc]['process_card'] == 'true'
-        update_ordr_cc(params[:cc])
-      end
-
-      redirect_to user_path, :notice => "You updated you!"
+      @user.update_ordr_account()
+      @user.save
+      redirect_to '/u', :notice => "You updated you!"
     else
+      redirect_to '/u', :notice => "Something failed"
     end  
   end
 
-
-
-
-#======= Helpers
-
-  def billing_address
-    Ordrin::Data::Address.new(@user.addr, @user.city, @user.state, @user.zip, @user.phone, @user.addr2)
-  end
-
-  def ordr_login
-    return Ordrin::Data::UserLogin.new(@user.email, @user.encrypted_password)
-  end
-
-  def credit_card(name, expiry_month, expiry_year, bill_address, number, cvc)
-    Ordrin::Data::CreditCard.new(name, expiry_month, expiry_year, bill_address, number, cvc)
-  end
-
-
-  def update_ordr_account()
-    if @user.ordr_account_id == nil || @user.ordr_account_id == ""
-      api_request = $ordrin.user.create(ordr_login, @user.first, @user.last)
-    else
-      api_request = $ordrin.user.update(ordr_login, @user.first, @user.last)
-    end
-    @user.ordr_account_id = api_request['user_id']
+  def update_cc
+    @user = current_user
+    @user.update_ordr_cc(params[:cc])
     @user.save
-
-  end
-
-
-  def update_ordr_cc(cc)
-    ordr_cc = credit_card(cc['name'], cc['expiry'][0], cc['expiry'][1], billing_address, cc['number'], cc['cvc'])
-
-    request = $ordrin.user.set_credit_card(ordr_login, "cc1", ordr_cc)
-
-    if request['msg'] == "Credit Card Saved"
-      # @TODO hard coding cc1 as card nickname for now
-      @user.card_nickname = "cc1"
-      @user.card_last_four = cc['number'].slice(-4, 4) 
-    else
-      @user.card_nickname = ""
-    end
-    @user.save
-
+    redirect_to '/u', :notice => "Card updated!"
   end
 
 end
