@@ -68,6 +68,7 @@ html {
 
 body {
   background: url('/assets/background.jpg') no-repeat top left;
+  background-attachment: fixed;
   font-family: 'Raleway', sans-serif;
   color: $white;
   a { font-weight: 600;}
@@ -186,11 +187,18 @@ body {
     line-height: 2em;
     padding: 10px 0 0 0;  
     ul {
+      float: left;
       list-style: none;
       li {
+        color: #333;
         display: inline-block;
         margin-right: 20px;
       }
+    }
+    .copyright {
+      float: right;
+      font-size: 0.6em;
+      margin-right: 20px;
     }
   }
   .bootstrap-timepicker {

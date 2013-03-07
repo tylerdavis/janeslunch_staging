@@ -1,5 +1,15 @@
 JaneslunchCom::Application.routes.draw do
 
+  get "info/about"
+
+  get "info/contact"
+
+  get "info/terms"
+
+  get "info/security"
+
+  get "info/suggestions"
+
   root :to => "site#index"
   
   resources :user
