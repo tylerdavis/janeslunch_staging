@@ -1,3 +1,9 @@
+<% if @user.ordr_account_id == nil || @user.ordr_account_id == "" %>
+<%  show_card = "hide" %>
+<%  else %>
+<%  show_card = "" %>
+<% end %>
+
 
 <div class="row-fluid">
   <div class="span4"></div>
@@ -35,10 +41,10 @@
         <th><%= f.label(:phone) %></th>
         <td><%= f.text_field(:phone) %></td>
       <tr>
-      <tr>
+      <tr class="<%= show_card %>">
         <th><label for="">Credit card:</label></th>
-        <td>
-        <% if @user.card_nickname == nil || @user.card_nickname.length == "" %>
+        <td id="credit_card">
+        <% if @user.card_nickname == nil || @user.card_nickname == "" %>
           <a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Add credit card</a>
         <% else %>
           xxxx-xxxx-xxxx-<%= @user.card_nickname%> <a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Change</a>
