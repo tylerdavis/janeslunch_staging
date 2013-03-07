@@ -13,12 +13,11 @@ class UserController < ApplicationController
   end
 
   def join
-
     current_user_update_attricute()
-  end 
+  end
   
   def ignore
-  end 
+  end
   
   def new
     @user = User.new
