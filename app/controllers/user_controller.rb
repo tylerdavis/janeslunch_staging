@@ -54,7 +54,11 @@ class UserController < ApplicationController
     @user = current_user
     @user.update_ordr_cc(params[:cc])
     @user.save
-    redirect_to '/u', :notice => "Card updated!"
+
+    respond_to do |format|  
+     format.js  
+    end  
+
   end
 
 end
