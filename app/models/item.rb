@@ -2,7 +2,7 @@ class Item < ActiveRecord::Base
   attr_accessible :descrip, :name, :ordrin_id, :price
 
   belongs_to :restaurant
-  belongs_to :group_order
+  has_and_belongs_to_many :group_order
   has_many :orders
   has_many :options
 
