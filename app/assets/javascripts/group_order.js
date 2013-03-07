@@ -26,19 +26,24 @@ $(function() {
       var container = $('#option-column');
       container.html('');
 
-      for (var i = 0; i < data.options.length; i++) {
+      if (data.options.length > 0) {
 
-        var option = $('<div class="option"></div>');
-        var optionLabel = $('<legend>' + data.options[i].name + '</legend>');
+        for (var i = 0; i < data.options.length; i++) {
 
-        option.append(optionLabel);
+          var option = $('<div class="option"></div>');
+          var optionLabel = $('<legend>' + data.options[i].name + '</legend>');
 
-        for (var j = 0; j < data.options[i].suboptions.length; j++) {
-          var price = data.options[i].suboptions[j].price === 0 ? '' : ' - <em>+$' + data.options[i].suboptions[j].price + '</em>';
-          var suboption = $('<div class="suboption"><label class="checkbox"><input type="checkbox">' + data.options[i].suboptions[j].name + price + '</label></div>');
-          option.append(suboption);
+          option.append(optionLabel);
+
+          for (var j = 0; j < data.options[i].suboptions.length; j++) {
+            var price = data.options[i].suboptions[j].price === 0 ? '' : ' - <em>+$' + data.options[i].suboptions[j].price + '</em>';
+            var suboption = $('<div class="suboption"><label class="checkbox"><input type="checkbox">' + data.options[i].suboptions[j].name + price + '</label></div>');
+            option.append(suboption);
+          }
+          container.append(option);
         }
-        container.append(option);
+      } else {
+        container.html('<h2 style="font-size:5.4em;line-height:1.0em;;text-align: center;color:rgba(0,0,0,0.1 );">Don\'t forget to tip!</h2>');
       }
     })
     .success(function() { console.log("Item request success"); })
