@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130305165119) do
+ActiveRecord::Schema.define(:version => 20130306190542) do
 
   create_table "choices", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -50,6 +50,8 @@ ActiveRecord::Schema.define(:version => 20130305165119) do
   create_table "invitations", :force => true do |t|
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+    t.integer  "user_id"
+    t.integer  "group_id"
   end
 
   create_table "invitationstogroups", :force => true do |t|
@@ -85,6 +87,16 @@ ActiveRecord::Schema.define(:version => 20130305165119) do
     t.float    "tip"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "ordr_ins", :force => true do |t|
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "pending_invitations", :force => true do |t|
+    t.integer "user_id"
+    t.integer "group_id"
   end
 
   create_table "restaurants", :force => true do |t|

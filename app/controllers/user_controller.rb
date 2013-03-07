@@ -2,10 +2,23 @@ class UserController < ApplicationController
   before_filter :authenticate_user!
 
   def index
+    @invited_groups = []
+    @invited_groups = PendingInvitations.where(:user_id => current_user.id)
+    @pending =[]
+    @invited_groups.each{|g| @pending << Group.find(g[:group_id])}
+
     if user_signed_in?
       @user = current_user
     end
   end
+
+  def join
+
+    current_user_update_attricute()
+  end 
+  
+  def ignore
+  end 
   
   def new
     @user = User.new
@@ -38,6 +51,8 @@ class UserController < ApplicationController
     else
     end  
   end
+
+
 
 
 #======= Helpers

@@ -1,14 +1,22 @@
 class Users::InvitationsController < Devise::InvitationsController
 
   def new
-    @group = params["groups_id"]
+    @group = params["id"]
+    # cache = ActiveSupport::Cache::MemoryStore.new
+    # cache.write("group_id", @group)
+    $groupHAHA = @group
     build_resource
     render :new
   end
   
   def create
-    $groupHAHA = params["group"]
+    
+    invitation = PendingInvitations.new
+    invitation.group_id = params["group"]
     self.resource = resource_class.invite!(resource_params, current_inviter)
+    
+    invitation.user_id = self.resource.id
+    invitation.save
 
     if resource.errors.empty?
       set_flash_message :notice, :send_instructions, :email => self.resource.email
@@ -28,6 +36,7 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   def update
+    
     self.resource = resource_class.accept_invitation!(resource_params)
 
     if resource.errors.empty?
@@ -42,3 +51,4 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
 end
+
