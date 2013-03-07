@@ -224,6 +224,8 @@ body {
   }
 }
 
+
+
 .registration-form {
   width: 15%;
   margin: 0 auto;
@@ -238,3 +240,17 @@ body {
     }
   }
 }
+
+.single_centered {
+  margin:auto;
+}
+
+.single_centered th {
+  text-align:right;
+  padding-right:10px;
+}
+
+.single_centered td {
+  text-align:left;
+}
+
