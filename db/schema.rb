@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130306190542) do
+ActiveRecord::Schema.define(:version => 20130307141024) do
 
   create_table "choices", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -20,7 +20,6 @@ ActiveRecord::Schema.define(:version => 20130306190542) do
 
   create_table "group_orders", :force => true do |t|
     t.integer  "group_id"
-    t.integer  "ordr_rid"
     t.datetime "delivery_time"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
