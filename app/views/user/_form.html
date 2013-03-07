@@ -37,12 +37,13 @@
 <div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-    <h3 id="myModalLabel">Modal header</h3>
+    <h3 id="myModalLabel">Enter credit card info</h3>
   </div>
   <div class="modal-body">
 
 
-    <%= form_for @user, :url => {:user => 'update_cc'} do |f|%>
+<%= form_for(@user,:method=>:post, :url => '/u/card', :remote => true) do |f| %>
+
       <label for="cc_name">Name on card</label>
       <input type="text" id="cc_name" name="cc[name]"><br>
 
@@ -56,10 +57,9 @@
       <label for="cc_cvc">CVC number</label>
       <input type="text" id="cc_cvc" name="cc[cvc]"><br>
 
-    <%= f.submit %>
-    <% end %> 
+  <%= f.submit %>
 
-
+<% end %>
 
   </div>
 
