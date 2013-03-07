@@ -2,17 +2,27 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.html {
-  background: #fff;
-  .terms {
-    width: 70%;
-    margin: 0 auto;
-    text-align: left;
-    .head {
-      text-align: center;
+
+.terms {
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 10px;
+  color: #333;
+  width: 70%;
+  margin: 0 auto;
+  text-align: left;
+  padding: 30px 60px;
+  .head {
+    text-align: center;
+    color: #333;
+    h2, h3, h4 {
+      color: #333;
     }
   }
-  .suggestion-form {
-    margin-top: 50px;
+  ol {
+    list-style: lower-latin;
+    padding-left: 20px;
   }
+}
+.suggestion-form {
+  margin-top: 50px;
 }
