@@ -13,10 +13,17 @@ class UserController < ApplicationController
   end
 
   def join
-    current_user_update_attricute()
+    @group = Group.find(params[:id])
+    @group.users << current_user
+    @groupstatus = PendingInvitations.where(:user_id => current_user.id, :group_id => params[:id]).first
+    @groupstatus.update_attributes(:user_id => nil, :group_id => nil)
+    redirect_to user_root_path, :notice => "Success!"
   end
   
   def ignore
+    @groupstatus = PendingInvitations.where(:user_id => current_user.id, :group_id => params[:id]).first
+    @groupstatus.update_attributes(:user_id => nil, :group_id => nil)
+    redirect_to user_root_path, :notice => "Group ignored"
   end
   
   def new
