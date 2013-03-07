@@ -8,6 +8,7 @@ class OrdersController < ApplicationController
     p @order
     @order.user = current_user
     @order.item = @item
+    @order.tip = params['tip']
     @order.group_order = @group_order
     puts @order.inspect
     if @order.save
