@@ -10,8 +10,8 @@
   <%= stylesheet_link_tag "bootstrap-timepicker" %>
   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
   <script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.0/js/bootstrap.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.0.1/lodash.min.js"></script>
-  <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script>
+  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/lodash.js/1.0.1/lodash.min.js"></script> -->
+  <!-- <script src="//cdnjs.cloudflare.com/ajax/libs/backbone.js/0.9.10/backbone-min.js"></script> -->
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -25,7 +25,7 @@
           <a href="/users/sign_out" class="dropdown-toggle" data-toggle="dropdown"><%= current_user.email %> <i class="icon-cog icon-white"></i></a>
 
             <ul class="dropdown-menu">
-              <li><a href="/u">Profile</a></li>
+              <li><a href="/u/edit">Edit Profile</a></li>
               <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
             </ul>
         <% else %>
