@@ -1,13 +1,16 @@
 <h1>Hi<% if @user.first %>,<% end %> <%= @user.first %> !</h1>
 <h2>are you ready for lunch?</h2>
 
-<br><br>
+<div class="groups">
 <h3>Your Groups:</h3>
+  <% @user.groups.each do |g| %>
+  <ul>
+    <li class="group"><%= link_to g.name, group_show_path(g.name) %>
+    <span class="add-member"><i class="icon-plus"></i><%= link_to 'Add Members', new_group_invitation_path(g) %></span></li>
+  </ul>
+  <% end %>
 
-<% @user.groups.each do |g| %>
-  <%= link_to g.name, group_show_path(g.name) %>
-  <%= link_to 'Add Members', new_group_invitation_path(g) %><br>
-<% end %>
+</div>
 
 <% if @pending.count > 0 %>
   <br>
