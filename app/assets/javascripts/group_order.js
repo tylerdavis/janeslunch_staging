@@ -1,6 +1,7 @@
 $(function() {
 
   var item;
+  var selection = {};
   
   var check = $("<div class=\"selected\"><i class=\"icon-ok icon-white\"></i></div>");
   
@@ -15,6 +16,9 @@ $(function() {
   $('#pop-modal').click(function(event) {
     $.getJSON('/items/'+ item + '.json', function(data) {
     // $.getJSON('/items/88.json', function(data) {
+      selection.price = data.price;
+
+      $('#total').html(selection.price);
       $('#myModalLabel').html(data.name);
 
       var container = $('#option-column');
@@ -24,7 +28,9 @@ $(function() {
 
         var option = $('<div class="option"></div>');
         var optionLabel = $('<legend>' + data.options[i].name + '</legend>');
+
         option.append(optionLabel);
+
         for (var j = 0; j < data.options[i].suboptions.length; j++) {
           var price = data.options[i].suboptions[j].price === 0 ? '' : ' - <em>+$' + data.options[i].suboptions[j].price + '</em>';
           var suboption = $('<div class="suboption"><label class="checkbox"><input type="checkbox">' + data.options[i].suboptions[j].name + price + '</label></div>');
@@ -37,6 +43,14 @@ $(function() {
     .error(function() { console.log("error"); })
     .complete(function() { console.log("complete"); });
   });
+
+$('#tip').bind('keyup', function(event) {
+  if (this.value === '') {
+    $('#total').html(selection.price);
+  } else {
+    $('#total').html(parseFloat(this.value) + parseFloat(selection.price));
+  }
+});
   
   // Post order
   $('#submit-order').click(function(event) {
