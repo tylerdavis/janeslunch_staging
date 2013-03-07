@@ -12,9 +12,14 @@ JaneslunchCom::Application.routes.draw do
 
   root :to => "site#index"
   
-  resources :user
-
-  resources :groups
+  resources :user do
+    member do
+        get 'join'
+        get 'ignore'
+      end
+  end
+      
+  resources :groups 
   
   resources :items
 
