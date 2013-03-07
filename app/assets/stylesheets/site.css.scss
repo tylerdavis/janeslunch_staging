@@ -125,7 +125,42 @@ body {
     }
   }
   .wrapper {
-    padding: 2em;
+    padding-top: 2em;
+    padding-bottom: 8em;
+    .groupform {
+      width: 680px;
+      margin: 0 auto;
+      margin-bottom: 0;
+      text-align: left;
+      .datacolumn {
+        width:320px;
+        .deliveryaddress {
+          text-align: right;
+          margin-bottom: 40px;
+          tbody{
+            tr{
+              td{
+                padding: 0px 6px;
+              }
+            }
+          }
+        }
+      }
+      .datacolumn:first-child{
+        margin-right: 40px;
+        float: left;
+      }
+      .datacolumn:last-child{
+        float: right;
+      }
+    }
+    .groupform:after {
+      content: ".";
+      visibility: hidden;
+      display: block;
+      height: 0;
+      clear: both;
+    }
     .btn-success {
       background-color: $green;
       background-image: none;
@@ -135,6 +170,7 @@ body {
       color: $white;
     }
     input {font-family: 'Raleway'; font-weight: 700;}
+    label {display: inline; font-weight: 700; font-size:18px;}
   }
   footer {
     background: $white;
