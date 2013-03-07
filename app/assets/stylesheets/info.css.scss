@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
-.terms {
+.terms, .security, .suggestions {
   background: rgba(255, 255, 255, 0.9);
   border-radius: 10px;
   color: #333;
@@ -11,18 +11,19 @@
   margin: 0 auto;
   text-align: left;
   padding: 30px 60px;
+  h2, h3, h4 {
+    color: #333;
+  }
   .head {
     text-align: center;
     color: #333;
-    h2, h3, h4 {
-      color: #333;
-    }
   }
   ol {
     list-style: lower-latin;
     padding-left: 20px;
   }
-}
-.suggestion-form {
-  margin-top: 50px;
+  .suggestion-form {
+    margin-top: 50px;
+    text-align: left;
+  }
 }
