@@ -1,33 +1,55 @@
 
-<%= form_for(@user) do |f| %>
+<div class="row-fluid">
+  <div class="span4" style="border:1px solid black;"></div>
+  <div class="span4" style="border:1px solid black;margin:auto;">
+    <%= form_for(@user) do |f| %>
+    <table border=1>
+      <tr>
+        <td><%= f.label(:first) %></td>
+        <td><%= f.text_field(:first) %></td>
+      </tr>
+      <tr> 
+        <td><%= f.label(:last) %></td>
+        <td><%= f.text_field(:last) %></td>
+      </tr>
+        <td><%= f.label(:addr) %></td>
+        <td><%= f.text_field(:addr) %></td>
+      <tr>
+      </tr>
+        <td><%= f.label(:addr2) %></td>
+        <td><%= f.text_field(:addr2) %></td>
+      <tr>
+      </tr>
+        <td><%= f.label(:city) %></td>
+        <td><%= f.text_field(:city) %></td>
+      <tr>
+      </tr>    
+        <td><%= f.label(:state) %></td>
+        <td><%= f.text_field(:state) %></td>
+      <tr>
+      </tr>
+        <td><%= f.label(:zip) %></td>
+        <td><%= f.text_field(:zip) %></td>
+      <tr>
+      </tr>    
+        <td><%= f.label(:phone) %></td>
+        <td><%= f.text_field(:phone) %></td>
+      <tr>
+      </tr>
+        <td></td>    
+        <td><%= f.submit 'Update', :class => 'btn btn-success' %></td>
+      </tr>
+    </table>
 
-  <%= f.label(:first) %>
-  <%= f.text_field(:first) %><br>
+  <% end %>
+  </div>
+  <div class="span4" style="border:1px solid black;"></div>
+</div>
 
-  <%= f.label(:last) %>
-  <%= f.text_field(:last) %><br>
-  
-  <%= f.label(:addr) %>
-  <%= f.text_field(:addr) %><br>
-  
-  <%= f.label(:addr2) %>
-  <%= f.text_field(:addr2) %><br>
 
-  <%= f.label(:city) %>
-  <%= f.text_field(:city) %><br>
-  
-  <%= f.label(:state) %>
-  <%= f.text_field(:state) %><br>
 
-  <%= f.label(:zip) %>
-  <%= f.text_field(:zip) %><br>
-  
-  <%= f.label(:phone) %>
-  <%= f.text_field(:phone) %><br>
 
-  <%= f.submit 'Update', :class => 'btn btn-success' %>
 
-<% end %>
 
 <% if @user.card_nickname.length > 1 %>
   Credit card: xxxx-xxxx-xxxx-<%= @user.card_nickname%><a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Change</a>
@@ -61,7 +83,7 @@
       <label for="cc_cvc">CVC number</label>
       <input type="text" id="cc_cvc" name="cc[cvc]"><br>
 
-  <%= f.submit %>
+  <%= f.submit 'Update', :class => 'btn btn-success' %>
 
 <% end %>
 
