@@ -25,7 +25,7 @@
       <tr>
       </tr>    
         <th><%= f.label(:state) %></th>
-        <td><%= f.text_field(:state) %></td>
+        <td><%= f.select :state, us_states%></td>
       <tr>
       </tr>
         <th><%= f.label(:zip) %></th>
@@ -38,10 +38,10 @@
       <tr>
         <th><label for="">Credit card:</label></th>
         <td>
-        <% if @user.card_nickname.length > 1 %>
-        xxxx-xxxx-xxxx-<%= @user.card_nickname%> <a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Change</a>
-        <% else %>
+        <% if @user.card_nickname == nil || @user.card_nickname.length == "" %>
           <a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Add credit card</a>
+        <% else %>
+          xxxx-xxxx-xxxx-<%= @user.card_nickname%> <a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Change</a>
         <% end %>
       </td>
       </tr>
