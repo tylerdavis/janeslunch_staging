@@ -36,7 +36,7 @@ class GroupsController < ApplicationController
       end
 
       unless @group_order.restaurant_id
-        redirect_to '/u', :notice => "Sorry, it looks like no one is delivery to your location at the moment."
+        redirect_to '/u', :notice => "Sorry, it looks like no one is delivering to your location at this time."
       end
 
     end
