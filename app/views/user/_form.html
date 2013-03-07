@@ -28,9 +28,14 @@
   <%= f.submit %>
 
 <% end %>
-Credit card: xxxx-xxxx-xxxx-<%= @user.card_nickname%>
 
-<a href="#card-modal" role="button" class="btn" data-toggle="modal">Change</a>
+<% if @user.card_nickname.length > 1 %>
+  Credit card: xxxx-xxxx-xxxx-<%= @user.card_nickname%><a href="#card-modal" role="button" class="btn" data-toggle="modal">Change</a>
+<% else %>
+  <a href="#card-modal" role="button" class="btn" data-toggle="modal">Add credit card</a>
+<% end %>
+
+
  
 <!-- Modal -->
 <div id="card-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="card-modalLabel" aria-hidden="true">
