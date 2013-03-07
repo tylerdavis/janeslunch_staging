@@ -1,4 +1,4 @@
-<h1>Hi <%= @user.first %> !</h1>
+<h1>Hi<% if @user.first %>,<% end %> <%= @user.first %> !</h1>
 <h2>are you ready for lunch?</h2>
 
 <br><br>

@@ -34,10 +34,12 @@ class GroupsController < ApplicationController
       else 
         @group_order = @group.group_orders.from_today.first
       end
+
       if @group_order.restaurant_id
       else
         redirect_to '/u', :notice => "Sorry, it looks like no one is delivery to your location at the moment."
       end
+
     end
   end
 

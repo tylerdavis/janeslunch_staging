@@ -1,22 +1,17 @@
-<h1>- Pick your lunch -</h1>
-<h2><%= @group_order.items[0].restaurant.name %></h2>
 
+
+<h1>- Pick your lunch -</h1>
+<h2><%= @group_order.restaurant.name %></h2>
 <div class="choices-wrapper row">
-    <div id="<%= @group_order.items[0].id %>" class="choice span4">
-      <h3><%= @group_order.items[0].name %></h3>
-      <p class="description"><%= @group_order.items[0].descrip %></p>
-      <span class="price"><%= number_to_currency(@group_order.items[0].price) %></span>
+  <% @group_order.items.each do |item| %>
+
+    <div id="<%= item.id %>" class="choice span4">
+      <h3><%= item.name %></h3>
+      <p class="description"><%= item.descrip %></p>
+      <span class="price"><%= number_to_currency(item.price) %></span>
     </div>
-    <div id="<%= @group_order.items[1].id %>" class="choice span4">
-      <h3><%= @group_order.items[1].name %></h3>
-      <p class="description"><%= @group_order.items[1].descrip %></p>
-      <span class="price"><%= number_to_currency(@group_order.items[1].price) %></span>
-    </div>
-    <div id="<%= @group_order.items[2].id %>" class="choice span4">
-      <h3><%= @group_order.items[2].name %></h3>
-      <p class="description"><%= @group_order.items[2].descrip %></p>
-      <span class="price"><%= number_to_currency(@group_order.items[2].price) %></span>
-    </div>
+  <% end %>
+
 </div>
 
   <a href="#option-modal" id="pop-modal" class="btn btn-large btn-success make-order" data-toggle="modal" style="display: none;">Order!</a>
@@ -35,7 +30,7 @@
     <div id="option-column" class="left"></div>
     <div class="right">
       <h3>Tip</h3>
-      <p>$ <input type="text"></p>
+      <p>$ <input id="tip" type="text" placeholder="Enter a tip"></p>
       <ul class="tip-calc">
         <li>15%</li>
         <li>20%</li>
