@@ -1,6 +1,7 @@
 $(function() {
 
-  var item;
+  var item,
+      tip;
   var selection = {};
   
   var check = $("<div class=\"selected\"><i class=\"icon-ok icon-white\"></i></div>");
@@ -13,12 +14,13 @@ $(function() {
     $('#pop-modal').fadeIn();
   });
 
+  // Populate modal with price and options/suboptions
   $('#pop-modal').click(function(event) {
     $.getJSON('/items/'+ item + '.json', function(data) {
     // $.getJSON('/items/88.json', function(data) {
       selection.price = data.price;
 
-      $('#total').html(selection.price);
+      $('#total').html('$' + selection.price);
       $('#myModalLabel').html(data.name);
 
       var container = $('#option-column');
@@ -44,19 +46,29 @@ $(function() {
     .complete(function() { console.log("complete"); });
   });
 
-$('#tip').bind('keyup', function(event) {
-  if (this.value === '') {
-    $('#total').html(selection.price);
-  } else {
-    $('#total').html(parseFloat(this.value) + parseFloat(selection.price));
-  }
-});
+  // Tip calculator logic
+  $('#tip').bind('keyup change', function(event) {
+    if (this.value === '') {
+      $('#total').html('$' + selection.price);
+    } else {
+      var total = (parseFloat(this.value) + parseFloat(selection.price)).toFixed(2);
+      $('#total').html('$' + total);
+    }
+  });
+
+  // Auto tip
+  $('.tip-calc li').click(function(event) {
+    tip = (parseFloat(this.className) * parseFloat(selection.price)).toFixed(2);
+    $('#tip').val(tip).change();
+  });
   
   // Post order
   $('#submit-order').click(function(event) {
     $.post('/' + window.group + '/order', {
       item : item,
+      tip : tip,
       groupOrder : window.groupOrder
-    });
+    })
+    .success(function() { console.log('Form submitted.'); });
   });
 });
