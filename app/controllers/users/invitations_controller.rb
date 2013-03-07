@@ -2,19 +2,15 @@ class Users::InvitationsController < Devise::InvitationsController
 
   def new
     @group = params["id"]
-    # cache = ActiveSupport::Cache::MemoryStore.new
-    # cache.write("group_id", @group)
     $groupHAHA = @group
     build_resource
     render :new
   end
   
   def create
-    
     invitation = PendingInvitations.new
     invitation.group_id = params["group"]
     self.resource = resource_class.invite!(resource_params, current_inviter)
-    
     invitation.user_id = self.resource.id
     invitation.save
 
@@ -36,7 +32,6 @@ class Users::InvitationsController < Devise::InvitationsController
   end
 
   def update
-    
     self.resource = resource_class.accept_invitation!(resource_params)
 
     if resource.errors.empty?
