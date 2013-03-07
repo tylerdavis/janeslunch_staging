@@ -16,7 +16,7 @@ class GroupsController < ApplicationController
       @group = Group.new(params[:group])
       @group.users << current_user
       if @group.save
-        redirect_to groups_path, :notice => "You created a new group!"
+        redirect_to "/#{@group.name}", :notice => "Your group is ready!"
       else
         render "new"
       end  
