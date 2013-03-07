@@ -1,5 +1,15 @@
 JaneslunchCom::Application.routes.draw do
 
+  get "info/about"
+
+  get "info/contact"
+
+  get "info/terms"
+
+  get "info/security"
+
+  get "info/suggestions"
+
   root :to => "site#index"
   
   resources :user do
@@ -31,6 +41,7 @@ JaneslunchCom::Application.routes.draw do
 
   get "/u" => "user#index", :as => :user_root
   get "/u/edit" => "user#edit"
+  post "/u/card" => "user#update_cc"
 
 
   match '/:groupname' => "groups#show", :as => 'group/show'

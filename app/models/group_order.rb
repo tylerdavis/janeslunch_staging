@@ -5,7 +5,7 @@ class GroupOrder < ActiveRecord::Base
   scope :from_today, where(" created_at between ? AND ?", Time.now.beginning_of_day, Time.now.end_of_day)
 
   belongs_to :group
-  has_many :items
+  has_and_belongs_to_many :items
   belongs_to :restaurant
   
 end

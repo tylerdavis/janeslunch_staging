@@ -16,7 +16,7 @@ class GroupsController < ApplicationController
       @group = Group.new(params[:group])
       @group.users << current_user
       if @group.save
-        redirect_to groups_path, :notice => "You created a new group!"
+        redirect_to "/#{@group.name}", :notice => "Your group is ready!"
       else
         render "new"
       end  
@@ -33,11 +33,12 @@ class GroupsController < ApplicationController
         @group.group_orders << @group_order
       else 
         @group_order = @group.group_orders.from_today.first
-        raise @group_order.inspect
       end
+
       unless @group_order.restaurant_id
         redirect_to '/u', :notice => "Sorry, it looks like no one is delivery to your location at the moment."
       end
+
     end
   end
 

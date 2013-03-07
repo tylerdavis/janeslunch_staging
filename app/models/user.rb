@@ -14,6 +14,42 @@ class User < ActiveRecord::Base
 
   attr_accessible :invitation_token
 
+  def billing_address
+    Ordrin::Data::Address.new(addr, city, state, zip, phone, addr2)
+  end
 
+  def ordr_login
+    return Ordrin::Data::UserLogin.new(email, encrypted_password)
+  end
+
+  def credit_card(name, expiry_month, expiry_year, bill_address, number, cvc)
+    Ordrin::Data::CreditCard.new(name, expiry_month, expiry_year, bill_address, number, cvc)
+  end
+
+
+  def update_ordr_account()
+    if self.ordr_account_id == nil || self.ordr_account_id == ""
+      api_response = $ordrin.user.create(ordr_login, first, last)
+    else
+      api_response = $ordrin.user.update(ordr_login, first, last)
+    end
+    puts api_response
+    if api_response['msg'] == "user saved"
+      self.ordr_account_id = api_response['user_id']
+    end
+  end
+
+
+  def update_ordr_cc(cc)
+    ordr_cc = credit_card(cc['name'], cc['expiry'][0], cc['expiry'][1], billing_address, cc['number'], cc['cvc'])
+    last4 = cc['number'].slice(-4,4)
+    api_response = $ordrin.user.set_credit_card(ordr_login, last4, ordr_cc)
+    puts api_response
+    if api_response['msg'].downcase == "credit card saved"
+      self.card_nickname = last4
+    else
+      self.card_nickname = ""
+    end
+  end
 
 end
