@@ -1,49 +1,61 @@
 
 <div class="row-fluid">
-  <div class="span4" style="border:1px solid black;"></div>
-  <div class="span4" style="border:1px solid black;margin:auto;">
+  <div class="span4"></div>
+  <div class="span4">
     <%= form_for(@user) do |f| %>
-    <table border=1>
+    <table class="single_centered">
       <tr>
-        <td><%= f.label(:first) %></td>
+        <th><%= f.label(:first) %></th>
         <td><%= f.text_field(:first) %></td>
       </tr>
       <tr> 
-        <td><%= f.label(:last) %></td>
+        <th><%= f.label(:last) %></th>
         <td><%= f.text_field(:last) %></td>
       </tr>
-        <td><%= f.label(:addr) %></td>
+        <th><%= f.label(:addr) %></th>
         <td><%= f.text_field(:addr) %></td>
       <tr>
       </tr>
-        <td><%= f.label(:addr2) %></td>
+        <th><%= f.label(:addr2) %></th>
         <td><%= f.text_field(:addr2) %></td>
       <tr>
       </tr>
-        <td><%= f.label(:city) %></td>
+        <th><%= f.label(:city) %></th>
         <td><%= f.text_field(:city) %></td>
       <tr>
       </tr>    
-        <td><%= f.label(:state) %></td>
+        <th><%= f.label(:state) %></th>
         <td><%= f.text_field(:state) %></td>
       <tr>
       </tr>
-        <td><%= f.label(:zip) %></td>
+        <th><%= f.label(:zip) %></th>
         <td><%= f.text_field(:zip) %></td>
       <tr>
       </tr>    
-        <td><%= f.label(:phone) %></td>
+        <th><%= f.label(:phone) %></th>
         <td><%= f.text_field(:phone) %></td>
       <tr>
       </tr>
         <td></td>    
         <td><%= f.submit 'Update', :class => 'btn btn-success' %></td>
       </tr>
-    </table>
 
   <% end %>
+      <tr><th></th><td></td></tr>
+      <tr>
+        <th><label for="">Credit card:</label></th>
+        <td>
+        <% if @user.card_nickname.length > 1 %>
+        xxxx-xxxx-xxxx-<%= @user.card_nickname%> <a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Change</a>
+        <% else %>
+          <a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Add credit card</a>
+        <% end %>
+      </td>
+      </tr>
+    </table>
+
   </div>
-  <div class="span4" style="border:1px solid black;"></div>
+  <div class="span4"></div>
 </div>
 
 
@@ -51,14 +63,7 @@
 
 
 
-<% if @user.card_nickname.length > 1 %>
-  Credit card: xxxx-xxxx-xxxx-<%= @user.card_nickname%><a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Change</a>
-<% else %>
-  <a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Add credit card</a>
-<% end %>
 
-
- 
 <!-- Modal -->
 <div id="card-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="card-modalLabel" aria-hidden="true">
   <div class="modal-header">
