@@ -51,7 +51,7 @@ class UserController < ApplicationController
     if @user.update_attributes(params[:user])
       @user.update_ordr_account()
       @user.save
-      redirect_to '/u', :notice => "You updated you!"
+      redirect_to '/u', :notice => "You updated your profile!"
     else
       redirect_to '/u', :notice => "Something failed"
     end  
