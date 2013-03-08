@@ -47,13 +47,13 @@
         <% if @user.card_nickname == nil || @user.card_nickname == "" %>
           <a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Add credit card</a>
         <% else %>
-          xxxx-xxxx-xxxx-<%= @user.card_nickname%> <a href="#card-modal" role="button" class="btn btn-info" data-toggle="modal">Change</a>
+          xxxx-xxxx-xxxx-<%= @user.card_nickname%> <a href="#card-modal" role="button" class="btn btn-info btn-block" data-toggle="modal">Change</a>
         <% end %>
       </td>
       </tr>
       <tr>
         <td></td>    
-        <td><br><%= f.submit 'Update', :class => 'btn btn-success' %></td>
+        <td><%= f.submit 'Update', :class => 'btn btn-success btn-block' %></td>
       </tr>
 
   <% end %>
@@ -81,20 +81,50 @@
 
 <%= form_for(@user,:method=>:post, :url => '/u/card', :remote => true) do |f| %>
 
-      <label for="cc_name">Name on card</label>
-      <input type="text" id="cc_name" name="cc[name]"><br>
+<table class="single_centered">
+  <tr>
+    <th><label for="cc_name">Name on card</label></th>
+    <td><input type="text" id="cc_name" name="cc[name]"></td>
+  </tr>  
+  <tr>
+    <th><label for="cc_card_number">Card number</label></th>
+    <td><input type="text" id="cc_card_number" name="cc[number]"></td>
+  </tr>
+  <tr>
+    <th><label for="cc_expiry">Expiry</label></th>
+    <td>
+      <select id="cc_expiry" name="cc[expiry][]" class="span2">
+        <option value="01">01 - January</option>
+        <option value="02">02 - February</option>
+        <option value="03">03 - March</option>
+        <option value="04">04 - April</option>
+        <option value="05">05 - May</option>
+        <option value="06">06 - June</option>
+        <option value="07">07 - July</option>
+        <option value="08">08 - August</option>
+        <option value="09">09 - September</option>
+        <option value="10">10 - October</option>
+        <option value="11">11 - November</option>
+        <option value="12">12 - December</option>
+      </select>
+      <select id="cc_expiry" name="cc[expiry][]" class="span2">
+        <% for year in (Time.now.year..Time.now.year+10) %>
+          <option value="<%= year %>"><%= year %></option>
+        <% end %>
+      </select>
+    </td>
+  </tr>
+  <tr>
+    <th><label for="cc_cvc">CVC</label></th>
+    <td><input type="text" id="cc_cvc" name="cc[cvc]"></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td><%= f.submit 'Update', :class => 'btn btn-success btn-block' %></td>
+  </tr>
+</table>
 
-      <label for="cc_card_number">Card number</label>
-      <input type="text" id="cc_card_number" name="cc[number]"><br>
-
-      <label for="cc_expiry">Expiry</label>
-      <input type="text" id="cc_expiry" name="cc[expiry][]" style="width:95px;">
-      <input type="text" id="cc_expiry" name="cc[expiry][]" style="width:95px;"><br>
-
-      <label for="cc_cvc">CVC number</label>
-      <input type="text" id="cc_cvc" name="cc[cvc]"><br>
-
-  <%= f.submit 'Update', :class => 'btn btn-success' %>
+  
 
 <% end %>
 
