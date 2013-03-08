@@ -14,17 +14,38 @@ body {
       ul {
         list-style: none;
         .group {
+          i.kill {
+            font-size: 0.6em;
+            position: relative;
+            left: 5px;
+            bottom: 3px;
+            color: rgba(255, 255, 255, 0.5);
+          }
+          i.kill:hover {
+            color: rgba(255, 0, 0, 0.5);
+            text-decoration: none;
+          }
+          a:hover {
+            text-decoration: none;
+          }
           font-size: 2em;
           .add-member {
             opacity: 0.4;
             font-size: 0.5em;
+            position: relative;
+            bottom: 2px;
             i {
               font-size: 0.8em;
               position: relative;
               bottom: 1px;
             }
           }
-
+          .add-member:hover, .add-member a:hover {
+            color: rgba(0, 255, 0, 0.5);
+          }
+        }
+        .group-name:hover {
+          color: rgb(250,189,62);
         }
       }
     }
@@ -41,43 +62,12 @@ body {
       .modal-body {
         text-align: left;
         color: #333;
-        .right {
-          float: right;
-          width: 30%;
-          h3 {
-            color: #333;
-          }
-          ul.tip-calc {
-            list-style: none;
-            position: relative;
-            left: 30px;
-            li {
-              margin-right: 20px;
-              display: inline-block;
-            }
-            li:last-child {
-              margin-right: 0;
-            }
-          }
-        }
-        .left {
-          float: left;
-          width: 60%;
-          .option {
-            .suboption {
-              label {
-                font-size: 1em;
-                font-weight: 100;
-                input {
-                  margin-left: 0;
-                }
-              }
-            }
-          }
-        }
         .clearfix {
           float: none;
           clear: both;
+        }
+        .expire-select {
+          width: 104px;
         }
         button {
           border-radius: 0;
@@ -87,6 +77,22 @@ body {
           text-shadow: none;
         }
       }
+      label {
+        float: left;
+        line-height: 1.6em;
+      }
+      input, select, button {
+        float: right;
+      }
+      #cc_expiry_month {
+        margin-right: 12px;
+      }
+      button.btn-success {
+        width: 219px;
+      }
+    }
+    input[type=submit] {
+      margin-top: 10px;
     }
   }
 
