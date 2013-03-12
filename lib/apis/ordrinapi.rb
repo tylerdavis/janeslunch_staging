@@ -1,4 +1,4 @@
-module OrdrinAPIWrapper
+module Ordrinapi
 
   def get_restaurant_response
     @restaurant_response = $ordrin.restaurant.get_details(@id)
