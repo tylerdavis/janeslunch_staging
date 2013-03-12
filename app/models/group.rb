@@ -1,6 +1,9 @@
 class Group < ActiveRecord::Base
   include Geo
 
+  before_save :get_lat_long
+  before_save :convert_time
+
   attr_accessible :name, :addr, :city, :state, :zip, :coords, :lat, :long, :phone, :addr2, :lunch_time, :group_orders
 
   validates :name, :uniqueness => true
@@ -8,7 +11,6 @@ class Group < ActiveRecord::Base
   validates :state, :length => { :is => 2 }
   validates :zip, :length => { :is => 5 }
 
-  before_save :convert_time
 
   has_and_belongs_to_many :users
   has_many :group_orders

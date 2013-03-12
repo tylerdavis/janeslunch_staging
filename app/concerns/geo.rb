@@ -1,9 +1,7 @@
 module Geo
-
-  after_initialize :get_lat_long
   
   def address_string
-    "#{ self.addr }, #{ self.city }, #{ self.state }, #{ self.zip }"
+    "#{ self.addr }, #{ self.city }, #{ self.state }"
   end
 
   def get_lat_long
