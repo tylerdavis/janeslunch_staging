@@ -3,4 +3,5 @@ class Restaurant < ActiveRecord::Base
 
   has_many :items
   has_many :group_orders
+
 end

@@ -1,19 +1,4 @@
-class RestaurantController < ApplicationController
-  # include OrdrinAPIWrapper
-
-  @@pass_on_categories = ['Starters', 'Sides', 'Gatorade', 'Biodegradable Disposables', '2-Liter Bottles', '20 Oz Bottles', 'Bottled Water', 'Ice', 'Menu Guide', 'Red Bull']
-
-  @@Max_price = 14
-  @@Min_price = 8
-
-  def create(id)
-    @id = id
-    get_restaurant_response
-    get_restaurant
-    get_items
-    @restaurant.save
-    @restaurant
-  end
+module OrdrinAPIWrapper
 
   def get_restaurant_response
     @restaurant_response = $ordrin.restaurant.get_details(@id)
