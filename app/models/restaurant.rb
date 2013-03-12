@@ -4,7 +4,9 @@ class Restaurant < ActiveRecord::Base
 
   before_save :get_lat_long
 
-  attr_accessible :addr, :addr2, :city, :cs_contact_phone, :cuisine, :name, :ordrin_id, :postal_code, :state, :lat, :long, :items
+  attr_accessible :addr, :addr2, :city, :cs_contact_phone,
+                  :cuisine, :name, :ordrin_id, :postal_code,
+                  :state, :lat, :long, :items
 
   has_many :items
   has_many :group_orders
@@ -13,16 +15,21 @@ class Restaurant < ActiveRecord::Base
     # Grubhub needs: lat, long, zipCode
     # Ordr.in needs: street_address, city, zipCode
 
-    # Return an array {ordrin : [ids], grubhub : [ids]}
+    # @TODO - Restaurant model - get list of restaurants method
+    # Return an array of rest_objects [{rest_obj :id, :rating, :api}]  api is either or || gh
   end
 
-  def self.new_with_id(id)
-    # Grubhub needs: lat, long, restaurantId
+  # @TODO - Restaurant model - recommendation methods
+
+  def self.new_with_id(rest_object)
+    # Grubhub needs: restaurantId
     # Ordr.in needs: rid
+
+    # @TODO - Restaurant model - new with id method
   end
 
-  def options=(option_list)
-    
+  def items=(items_array)
+    # @TODO - Restaurant model - items writer method
   end
 
 end
