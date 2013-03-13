@@ -1,6 +1,6 @@
 class Restaurant < ActiveRecord::Base
-  include Ordrinapi
   include Geo
+  include Ordrinapi
 
   before_save :get_lat_long
 
@@ -11,7 +11,7 @@ class Restaurant < ActiveRecord::Base
   has_many :items
   has_many :group_orders
 
-  def self.get_restaurants(options={})
+  def self.get_restaurants()
     # Grubhub needs: lat, long, zipCode
     # Ordr.in needs: street_address, city, zipCode
 

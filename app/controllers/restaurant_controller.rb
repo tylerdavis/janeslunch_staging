@@ -3,8 +3,8 @@ class RestaurantController < ApplicationController
 
   @@pass_on_categories = ['Starters', 'Sides', 'Gatorade', 'Biodegradable Disposables', '2-Liter Bottles', '20 Oz Bottles', 'Bottled Water', 'Ice', 'Menu Guide', 'Red Bull']
 
-  @@Max_price = 14
-  @@Min_price = 8
+  @@max_price = 14
+  @@min_price = 8
 
   def create(id)
     @id = id
@@ -40,7 +40,7 @@ class RestaurantController < ApplicationController
     @restaurant_response['menu'].each do |category|
       unless @@pass_on_categories.include?(category['name'])
         category['children'].each do |item|
-          if (item['price'].to_f < @@Max_price) && (item['price'].to_f > @@Min_price)
+          if (item['price'].to_f < @@max_price) && (item['price'].to_f > @@min_price)
             new_item = Item.where(:ordrin_id => item['id'].to_i).first_or_create(
               :name => item['name'],
               :price => item['price'],

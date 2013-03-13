@@ -4,7 +4,7 @@ class Group < ActiveRecord::Base
   before_save :get_lat_long
   before_save :convert_time
 
-  attr_accessible :name, :addr, :city, :state, :zip, :coords, :lat, :long, :phone, :addr2, :lunch_time, :group_orders
+  attr_accessible :name, :addr, :addr2, :city, :state, :zip, :coords, :lat, :long, :phone, :lunch_time, :group_orders
 
   validates :name, :uniqueness => true
   validates :addr, :city, :presence => true
@@ -19,7 +19,7 @@ class Group < ActiveRecord::Base
     Ordrin::Data::Address.new(addr, city, state, zip, phone, addr2)
   end
 
-  def convert_time 
+  def convert_time
      @lunch_time = DateTime.parse(lunch_time.to_s)
   end
 
