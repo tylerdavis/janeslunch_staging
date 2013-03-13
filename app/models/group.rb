@@ -6,7 +6,6 @@ class Group < ActiveRecord::Base
 
   validates :name, :uniqueness => true
 
-  has_one :address
   has_and_belongs_to_many :users
   has_many :group_orders
 

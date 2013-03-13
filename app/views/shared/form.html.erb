@@ -5,8 +5,10 @@
         <%= f.label(:name) %>
         <%= f.text_field(:name) %><br>
 
-        <%= f.label(:phone) %>
-        <%= f.text_field(:phone) %><br>
+      <% fields_for @group.address do |address_fields| %>
+        <%= address_fields.label :phone %>
+        <%= address_fields.text_field :phone %><br>
+      <% end %>
 
         <%= f.label(:lunch_time) %>
         <div class='input-append bootstrap-timepicker' style='display: inline;'>

@@ -2,7 +2,6 @@ class Restaurant < ActiveRecord::Base
 
   attr_accessible :cuisine, :name, :ordrin_id, :items
 
-  has_one :address
   has_many :items
   has_many :group_orders
 
@@ -12,7 +11,6 @@ class Restaurant < ActiveRecord::Base
 
     # @TODO - Restaurant model - get list of restaurants method
     # Return an array of rest_objects [{rest_obj :id, :rating, :api}]  api is either or || gh
-
   end
 
   # @TODO - Restaurant model - recommendation methods

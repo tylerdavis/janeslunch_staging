@@ -1,6 +1,9 @@
 class Address < ActiveRecord::Base
   attr_accessible :addr, :addr2, :city, :lat, :long, :state, :zip
 
+  belongs_to :restaurant
+  belongs_to :group
+
   validates :addr, :city, :presence => true
   validates :state, :length => { :is => 2 }
   validates :zip, :length => { :is => 5 }
