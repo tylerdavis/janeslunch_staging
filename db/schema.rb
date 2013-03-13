@@ -11,7 +11,19 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130312205528) do
+ActiveRecord::Schema.define(:version => 20130313141919) do
+
+  create_table "addresses", :force => true do |t|
+    t.string   "addr"
+    t.string   "addr2"
+    t.string   "city"
+    t.string   "state"
+    t.string   "zip"
+    t.string   "lat"
+    t.string   "long"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
 
   create_table "choices", :force => true do |t|
     t.datetime "created_at", :null => false
@@ -33,17 +45,9 @@ ActiveRecord::Schema.define(:version => 20130312205528) do
 
   create_table "groups", :force => true do |t|
     t.string   "name"
-    t.string   "addr"
-    t.string   "city"
-    t.string   "zip"
-    t.string   "phone"
-    t.string   "addr2"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
-    t.string   "state"
     t.string   "lunch_time"
-    t.string   "lat"
-    t.string   "long"
   end
 
   create_table "groups_users", :id => false, :force => true do |t|
@@ -104,19 +108,11 @@ ActiveRecord::Schema.define(:version => 20130312205528) do
   end
 
   create_table "restaurants", :force => true do |t|
-    t.string   "addr"
-    t.string   "addr2"
-    t.string   "city"
-    t.string   "cs_contact_phone"
     t.string   "cuisine"
     t.string   "name"
-    t.string   "postal_code"
     t.integer  "ordrin_id"
-    t.string   "state"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.string   "lat"
-    t.string   "long"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "suboptions", :force => true do |t|

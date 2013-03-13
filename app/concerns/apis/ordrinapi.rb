@@ -1,5 +1,9 @@
 module Ordrinapi
 
+  def get_restaurants(address_for_ordrin, city, zip)
+    # @TODO - return a rest_obj - {:name => '', :id => ###}
+  end
+
   def get_restaurant_response
     @restaurant_response = $ordrin.restaurant.get_details(@id)
   end

@@ -71,7 +71,7 @@ class GroupsController < ApplicationController
     time = @group.lunch_time
     # @TODO - Get time zone support sorted
     time = DateTime.parse(time + ' Eastern')
-    address = @group.address_for_ordr
+    address = @group.address.address_for_ordr
     begin
       restaurants = $ordrin.restaurant.get_delivery_list(time, address)
       id = restaurants.sample['id'] || 0
