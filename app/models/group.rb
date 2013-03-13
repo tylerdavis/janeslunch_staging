@@ -4,7 +4,8 @@ class Group < ActiveRecord::Base
   before_save :get_lat_long
   before_save :convert_time
 
-  attr_accessible :name, :addr, :addr2, :city, :state, :zip, :coords, :lat, :long, :phone, :lunch_time, :group_orders
+  attr_accessible :name, :addr, :addr2, :city, :state, :zip,
+                  :lat, :long, :phone, :lunch_time, :group_orders
 
   validates :name, :uniqueness => true
   validates :addr, :city, :presence => true

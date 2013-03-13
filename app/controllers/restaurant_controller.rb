@@ -1,5 +1,5 @@
 class RestaurantController < ApplicationController
-  # include OrdrinAPIWrapper
+  include Ordrinapi
 
   @@pass_on_categories = ['Starters', 'Sides', 'Gatorade', 'Biodegradable Disposables', '2-Liter Bottles', '20 Oz Bottles', 'Bottled Water', 'Ice', 'Menu Guide', 'Red Bull']
 
