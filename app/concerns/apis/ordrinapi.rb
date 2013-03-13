@@ -25,7 +25,7 @@ module Ordrinapi
     @restaurant_response['menu'].each do |category|
       unless @@pass_on_categories.include?(category['name'])
         category['children'].each do |item|
-          if (item['price'].to_f < @@Max_price) && (item['price'].to_f > @@Min_price)
+          if (item['price'].to_f < @@max_price) && (item['price'].to_f > @@min_price)
             new_item = Item.where(:ordrin_id => item['id'].to_i).first_or_create(
               :name => item['name'],
               :price => item['price'],
