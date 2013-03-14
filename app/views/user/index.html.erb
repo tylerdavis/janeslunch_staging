@@ -5,7 +5,9 @@
 <h3>Your Groups:</h3>
   <% @user.groups.each do |g| %>
   <ul>
-    <li class="group"><%= link_to g.name, group_show_path(g.name) %>
+    <li class="group">
+      <a href=""><i class="kill icon-remove"></i></a>
+      <%= link_to g.name, group_show_path(g.name), :class => 'group-name' %>
     <span class="add-member"><i class="icon-plus"></i><%= link_to 'Add Members', new_group_invitation_path(g) %></span></li>
   </ul>
   <% end %>

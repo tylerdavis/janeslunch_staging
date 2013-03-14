@@ -1,7 +1,7 @@
 class GroupsController < ApplicationController
   before_filter :authenticate_user!
 
-  @@meat = ['beef', 'chicken', 'pork', 'ham', 'tongue', 'meatball', 'bacon', 'sausage', 'salmon', 'pepperoni', 'tuna', 'halibut', 'shrimp']
+  @@meat = %w(beef chicken pork ham tongue meatball bacon sausage salmon pepperoni tuna halibut shrimp)
 
   def index
     @group_name = params['groupname']
@@ -9,6 +9,7 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    @group.build_address
   end
 
   def create
@@ -16,29 +17,28 @@ class GroupsController < ApplicationController
       @group = Group.new(params[:group])
       @group.users << current_user
       if @group.save
-        redirect_to "/#{@group.name}", :notice => "Your group is ready!"
+        redirect_to "/#{@group.name}", :notice => 'Your group is ready!'
       else
-        render "new"
-      end  
+        render 'new'
+      end
     end
   end
 
   def show
     get_group
-    unless @group
-      redirect_to '/u'
-    else
+    if @group
       if @group.group_orders.from_today.size == 0
         new_group_order
         @group.group_orders << @group_order
-      else 
+      else
         @group_order = @group.group_orders.from_today.first
       end
 
       unless @group_order.restaurant_id
-        redirect_to '/u', :notice => "Sorry, it looks like no one is delivering to your location at this time."
+        redirect_to '/u', :notice => 'Sorry, it looks like no one is delivering to your location at this time.'
       end
-
+    else
+      redirect_to '/u'
     end
   end
 
@@ -49,7 +49,7 @@ class GroupsController < ApplicationController
   def update
     @group = Group.find(params[:id])
     if @group.update_attributes(params[:group])
-      redirect_to groups_path, :notice => "You updated your group!"
+      redirect_to groups_path, :notice => 'You updated your group!'
     else
     end
   end
@@ -63,15 +63,16 @@ class GroupsController < ApplicationController
     @group_order = GroupOrder.new
     @group_order.group = @group
 
-    if (get_restaurant != false)
-      get_choices 
+    if get_restaurant
+      get_choices
     end
   end
 
   def get_restaurant
     time = @group.lunch_time
+    # @TODO - Get time zone support sorted
     time = DateTime.parse(time + ' Eastern')
-    address = @group.address_for_ordr
+    address = @group.address.address_for_ordr
     begin
       restaurants = $ordrin.restaurant.get_delivery_list(time, address)
       id = restaurants.sample['id'] || 0
@@ -92,7 +93,7 @@ class GroupsController < ApplicationController
     meat_choice = get_item(@@meat)
     @group_order.items << meat_choice
     meat_choice.save
-    chicken_choice = get_item(['chicken'])
+    chicken_choice = get_item(%w(chicken))
     @group_order.items << chicken_choice
     chicken_choice.save
     vegie_choice = get_item_thats_not(@@meat)
