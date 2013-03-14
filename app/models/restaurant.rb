@@ -1,6 +1,10 @@
 class Restaurant < ActiveRecord::Base
 
-  attr_accessible :cuisine, :name, :ordrin_id, :items
+  attr_accessible :cuisine, :name, :ordrin_id, :items, :address_attributes
+
+
+  belongs_to :address
+  accepts_nested_attributes_for :address
 
   has_many :items
   has_many :group_orders

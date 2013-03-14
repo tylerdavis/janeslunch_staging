@@ -14,33 +14,35 @@
         <th><%= f.label(:first) %></th>
         <td><%= f.text_field(:first) %></td>
       </tr>
-      <tr> 
+      <tr>
         <th><%= f.label(:last) %></th>
         <td><%= f.text_field(:last) %></td>
       </tr>
-        <th><%= f.label(:addr) %></th>
-        <td><%= f.text_field(:addr) %></td>
-      <tr>
-      </tr>
-        <th><%= f.label(:addr2) %></th>
-        <td><%= f.text_field(:addr2) %></td>
-      <tr>
-      </tr>
-        <th><%= f.label(:city) %></th>
-        <td><%= f.text_field(:city) %></td>
-      <tr>
-      </tr>    
-        <th><%= f.label(:state) %></th>
-        <td><%= f.select :state, us_states%></td>
-      <tr>
-      </tr>
-        <th><%= f.label(:zip) %></th>
-        <td><%= f.text_field(:zip) %></td>
-      <tr>
-      </tr>    
-        <th><%= f.label(:phone) %></th>
-        <td><%= f.text_field(:phone) %></td>
-      <tr>
+        <%= f.fields_for :address do |address_fields| %>
+            <th><%= address_fields.label(:addr) %></th>
+            <td><%= address_fields.text_field(:addr) %></td>
+          <tr>
+          </tr>
+            <th><%= address_fields.label(:addr2) %></th>
+            <td><%= address_fields.text_field(:addr2) %></td>
+          <tr>
+          </tr>
+            <th><%= address_fields.label(:city) %></th>
+            <td><%= address_fields.text_field(:city) %></td>
+          <tr>
+          </tr>
+            <th><%= address_fields.label(:state) %></th>
+            <td><%= address_fields.select :state, us_states%></td>
+          <tr>
+          </tr>
+            <th><%= address_fields.label(:zip) %></th>
+            <td><%= address_fields.text_field(:zip) %></td>
+          <tr>
+          </tr>
+            <th><%= address_fields.label(:phone) %></th>
+            <td><%= address_fields.text_field(:phone) %></td>
+          <tr>
+      <% end %>
       <tr class="<%= show_card %>">
         <th><label for="">Credit card</label></th>
         <td id="credit_card">
@@ -52,7 +54,7 @@
       </td>
       </tr>
       <tr>
-        <td></td>    
+        <td></td>
         <td><%= f.submit 'Update', :class => 'btn btn-success btn-block' %></td>
       </tr>
 

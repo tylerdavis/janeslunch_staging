@@ -1,23 +1,22 @@
 class Address < ActiveRecord::Base
-  attr_accessible :addr, :addr2, :city, :lat, :long, :state, :zip
-
-  belongs_to :restaurant
-  belongs_to :group
+  attr_accessible :addr, :addr2, :city, :lat, :long, :state, :zip, :phone
 
   validates :addr, :city, :presence => true
   validates :state, :length => { :is => 2 }
   validates :zip, :length => { :is => 5 }
 
-  after_initialize :get_lat_long
+  before_save :get_lat_long
 
   def address_string
     "#{ self.addr }, #{ self.city }, #{ self.state }"
   end
 
   def get_lat_long
-    res = Geocoder.search(address_string)
-    self.lat = res[0].latitude
-    self.long = res[0].longitude
+    unless self.lat && self.long
+      res = Geocoder.search(address_string)
+      self.lat = res[0].latitude
+      self.long = res[0].longitude
+    end
   end
 
   def address_for_ordr

@@ -5,9 +5,9 @@
         <%= f.label(:name) %>
         <%= f.text_field(:name) %><br>
 
-      <% fields_for @group.address do |address_fields| %>
+      <%= f.fields_for :address do |address_fields| %>
         <%= address_fields.label :phone %>
-        <%= address_fields.text_field :phone %><br>
+        <%= address_fields.telephone_field :phone %><br>
       <% end %>
 
         <%= f.label(:lunch_time) %>
@@ -23,35 +23,41 @@
             minuteStep: 15,
             showMeridian: false,
             showSeconds: false,
-            defaultTime: '<%= @group.lunch_time || "12:00" %>'
+            defaultTime: '<%= @group.lunch_time || '12:00' %>'
           });
         });
         </script> <br> <br>
     </div>
     <div class="datacolumn">
       <h3>Delivery Address</h3>
+
+      <%= f.fields_for :address do |address_fields| %>
+
         <table class="deliveryaddress">
         <tr>
-          <td> <%= f.label(:addr) %> </td>
-          <td> <%= f.text_field(:addr) %></td>
+          <td> <%= address_fields.label :addr %> </td>
+          <td> <%= address_fields.text_field :addr %></td>
         </tr>
         <tr>
-          <td> <%= f.label(:addr2) %></td>
-          <td> <%= f.text_field(:addr2) %></td>
+          <td> <%= address_fields.label :addr2 %></td>
+          <td> <%= address_fields.text_field :addr2 %></td>
         </tr>
         <tr>
-          <td> <%= f.label(:city) %></td>
-          <td> <%= f.text_field(:city) %></td>
+          <td> <%= address_fields.label :city %></td>
+          <td> <%= address_fields.text_field :city %></td>
         </tr>
         <tr>
-          <td> <%= f.label(:state) %></td>
-          <td> <%= f.select :state, us_states%></td>
+          <td> <%= address_fields.label :state %></td>
+          <td> <%= address_fields.select :state, us_states %></td>
         </tr>
         <tr>
-          <td> <%= f.label(:zip) %></td>
-          <td> <%= f.text_field(:zip) %></td>
+          <td> <%= address_fields.label :zip %></td>
+          <td> <%= address_fields.text_field :zip %></td>
         </tr>
         </table>
+
+      <% end %>
+
     </div>
   </div>
   <%= f.submit 'Submit', :class => 'btn btn-large btn-success' %>
