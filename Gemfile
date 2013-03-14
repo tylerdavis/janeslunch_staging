@@ -31,6 +31,9 @@ gem 'ordrin'
 # Bootstrap Timepicker
 gem 'bootstrap-timepicker-rails'
 
+# Geo Location Library
+gem 'geocoder'
+
 # To use Jbuilder templates for JSON
 # gem 'jbuilder'
 

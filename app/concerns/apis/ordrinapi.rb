@@ -1,18 +1,7 @@
-class RestaurantController < ApplicationController
-  include Ordrinapi
+module Ordrinapi
 
-  @@pass_on_categories = ['Starters', 'Sides', 'Gatorade', 'Biodegradable Disposables', '2-Liter Bottles', '20 Oz Bottles', 'Bottled Water', 'Ice', 'Menu Guide', 'Red Bull']
-
-  @@max_price = 14
-  @@min_price = 8
-
-  def create(id)
-    @id = id
-    get_restaurant_response
-    get_restaurant
-    get_items
-    @restaurant.save
-    @restaurant
+  def get_restaurants(address_for_ordrin, city, zip)
+    # @TODO - return a rest_obj - {:name => '', :id => ###}
   end
 
   def get_restaurant_response
