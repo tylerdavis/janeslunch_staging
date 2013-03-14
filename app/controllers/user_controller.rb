@@ -17,13 +17,13 @@ class UserController < ApplicationController
     @group.users << current_user
     @groupstatus = PendingInvitations.where(:user_id => current_user.id, :group_id => params[:id]).first
     @groupstatus.update_attributes(:user_id => nil, :group_id => nil)
-    redirect_to user_root_path, :notice => "Success!"
+    redirect_to user_root_path, :notice => 'Success!'
   end
 
   def ignore
     @groupstatus = PendingInvitations.where(:user_id => current_user.id, :group_id => params[:id]).first
     @groupstatus.update_attributes(:user_id => nil, :group_id => nil)
-    redirect_to user_root_path, :notice => "Group ignored"
+    redirect_to user_root_path, :notice => 'Group ignored'
   end
 
   def new
@@ -41,9 +41,9 @@ class UserController < ApplicationController
   def create
     @user = User.new(params[:user])
     if @user.save
-      redirect_to root_url, :notice => "Success!"
+      redirect_to root_url, :notice => 'Success!'
     else
-      render "new"
+      render 'new'
     end
   end
 
@@ -52,9 +52,9 @@ class UserController < ApplicationController
     if @user.update_attributes(params[:user])
       @user.update_ordr_account()
       @user.save
-      redirect_to '/u', :notice => "You updated your profile!"
+      redirect_to '/u', :notice => 'You updated your profile!'
     else
-      redirect_to '/u', :notice => "Something failed"
+      redirect_to '/u', :notice => 'Something failed'
     end
   end
 
