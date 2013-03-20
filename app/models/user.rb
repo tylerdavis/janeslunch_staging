@@ -2,13 +2,13 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :invitable, :database_authenticatable, :registerable,
+  devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
   attr_accessible :ordr_account_id, :card_nickname, :card_last_four, :email, :password, :password_confirmation, :remember_me, :invitation_token, :address_attributes
 
   has_and_belongs_to_many :groups
-  has_many :invitations, :class_name => self.to_s, :as => :invited_by
+  has_many :invitations, :class_name => 'Invitation'
   has_one :ordr_account
   belongs_to :address
   accepts_nested_attributes_for :address
