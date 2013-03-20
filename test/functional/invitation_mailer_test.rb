@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class InvitationsControllerTest < ActionController::TestCase
+class InvitationMailerTest < ActionMailer::TestCase
   # test "the truth" do
   #   assert true
   # end

@@ -24,7 +24,6 @@ gem 'jquery-rails'
 
 # To use ActiveModel has_secure_password
 gem 'devise'
-gem 'devise_invitable'
 
 # ordr.in
 gem 'ordrin'

@@ -1,0 +1,9 @@
+<%= form_for(@invitation, :url => create_group_invitation_path, :html => {:method => :post}) do |f| %>
+  <%= fields_for :user do |u| %>
+    <%= u.label :email %><br><br>
+    <%= u.text_field :email %>
+  <% end %>
+  <br><br>
+<%= f.submit 'Send Invite!', :class => 'btn btn-large btn-success' %>  
+<% end %>
+   
