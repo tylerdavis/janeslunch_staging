@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   attr_accessible :ordr_account_id, :card_nickname, :card_last_four, :email, :password, :password_confirmation, :remember_me, :invitation_token, :address_attributes
 
   has_and_belongs_to_many :groups
-  has_many :invitations #:class_name => self.to_s, :as => :invited_by
+  has_many :invitations, :class_name => 'Invitation'
   has_one :ordr_account
   belongs_to :address
   accepts_nested_attributes_for :address

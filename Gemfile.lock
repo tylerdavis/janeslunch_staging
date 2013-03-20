@@ -121,7 +121,6 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   devise
   geocoder
-
   jquery-rails
   ordrin
   rails (= 3.2.12)

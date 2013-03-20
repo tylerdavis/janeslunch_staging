@@ -1,9 +1,13 @@
 class Invitation < ActiveRecord::Base
+  # belongs_to :sender, :class_name => 'User'
+  # has_one :recipient, :class_name => 'User'
   belongs_to :user
-  has_one :recipient
 
-  validates :recipient_already_has_token
+  attr_accessible :user_id, :group_id, :user_attributes
 
+  validates_presence_of :email, :on => :create, :message => "can't be blank"
+  before_create :recipient_already_has_token
+  accepts_nested_attributes_for :user
 
 
   private
