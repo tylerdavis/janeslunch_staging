@@ -5,7 +5,7 @@ class InvitationsController < ApplicationController
   end
   
   def create
-    @invitation = Invitation.create!(params[:invitation])
+    @invitation = Invitation.new(params[:invitation])
     recipient = User.new
     @invitation.group_id = params[:id]
     @invitation.user_id = self.user_id
